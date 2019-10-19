@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.net.URL?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-full" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.CompactPlaylistController">
+  <children>
+    <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView id="" fx:id="playlistImage" fitHeight="150.0" fitWidth="150.0" onMousePressed="#onPlaylistImageClicked" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+          <image>
+            <Image url="@../../assets/sample/album_0.png" />
+          </image>
+          <GridPane.margin>
+            <Insets />
+          </GridPane.margin>
+        </ImageView>
+        <GridPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+          <children>
+            <Label text="PLAYLIST" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <GridPane.margin>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" fx:id="x1" />
+              </GridPane.margin>
+            </Label>
+            <Label id="playlistName" text="Playlist Name" textFill="WHITE" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="1" />
+            <fx:include id="playButton" source="SpotifyPlay.fxml" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+              <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+              </GridPane.margin>
+            </fx:include>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="-1.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-1.0" minHeight="-1.0" prefHeight="75.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
+        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-1.0" minWidth="200.0" prefWidth="-1.0" />
+      </columnConstraints>
+      <padding>
+        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="NEVER" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+  <stylesheets>
+    <URL value="@../../style/measy.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1093.0" prefWidth="992.0" styleClass="panel-dark-medium" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.ArtistScreenController">
+  <children>
+    <ScrollPane fitToHeight="false" fitToWidth="true" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <content>
+        <GridPane prefHeight="-1.0" prefWidth="-1.0">
+          <children>
+            <fx:include source="ArtistHeader.fxml" prefHeight="-1.0" prefWidth="500.0" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="0" GridPane.valignment="TOP" GridPane.vgrow="NEVER" />
+            <fx:include source="Playlist.fxml" GridPane.columnIndex="0" GridPane.rowIndex="1">
+              <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" fx:id="x1" />
+              </padding>
+              <GridPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x2" />
+              </GridPane.margin>
+            </fx:include>
+            <fx:include source="Playlist.fxml" GridPane.columnIndex="0" GridPane.rowIndex="2">
+              <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" fx:id="x1" />
+              </padding>
+              <GridPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x2" />
+              </GridPane.margin>
+            </fx:include>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="-1.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints fillHeight="true" minHeight="100.0" prefHeight="-1.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="-1.0" valignment="TOP" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="-1.0" valignment="TOP" vgrow="ALWAYS" />
+          </rowConstraints>
+        </GridPane>
+      </content>
+    </ScrollPane>
+  </children>
+  <stylesheets>
+    <URL value="@../../style/measy.css" />
+  </stylesheets>
+</AnchorPane>

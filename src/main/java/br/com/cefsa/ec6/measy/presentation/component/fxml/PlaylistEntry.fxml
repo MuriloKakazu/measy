@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="36.0" prefWidth="661.0" styleClass="panel-dark-low" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.PlaylistEntryController">
+  <children>
+    <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label id="track" onMouseClicked="#onTrackNameMouseClicked" text="Track name" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0">
+          <GridPane.margin>
+            <Insets left="20.0" fx:id="x1" />
+          </GridPane.margin>
+        </Label>
+        <Label id="artist" onMouseClicked="#onArtistNameMouseClicked" text="Artist name" textFill="WHITE" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="0" />
+        <Label id="album" onMouseClicked="#onAlbumNameMouseClicked" text="Album name" textFill="WHITE" GridPane.columnIndex="3" GridPane.margin="$x1" GridPane.rowIndex="0" />
+        <Label id="duration" text="Track duration" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="0">
+          <GridPane.margin>
+            <Insets left="20.0" right="20.0" />
+          </GridPane.margin>
+        </Label>
+        <Button mnemonicParsing="false" onMouseClicked="#onTrackNameMouseClicked" styleClass="button-dark-full" text="Play" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <stylesheets>
+            <URL value="@../../style/measy.css" />
+          </stylesheets>
+          <GridPane.margin>
+            <Insets left="10.0" />
+          </GridPane.margin>
+        </Button>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" maxWidth="96.0" minWidth="96.0" prefWidth="96.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" />
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-1.0" minWidth="50.0" prefWidth="50.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="34.0" minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+  <stylesheets>
+    <URL value="@../../style/measy.css" />
+  </stylesheets>
+</AnchorPane>
