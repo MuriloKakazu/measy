@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-medium" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.LyricsController">
+  <children>
+    <TextArea prefWidth="-1.0" styleClass="content" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit &#10;In blandit posuere semper&#10;Phasellus sagittis semper lectus, eu lacinia eros sollicitudin eu&#10;Duis in nisl hendrerit, condimentum est sed, suscipit neque&#10;&#10;Nunc congue neque ipsum, ut scelerisque sem maximus non&#10;Aliquam ut nunc commodo, pellentesque ante eu, auctor nunc&#10;Maecenas vel est vehicula, pulvinar tortor eu, convallis diam&#10;Maecenas gravida, augue a tincidunt commodo, &#10;felis nisl hendrerit dolor, eu auctor lacus nisi vitae nisi&#10;&#10;Fusce id metus consequat, accumsan ligula non, tempus ex&#10;Suspendisse suscipit nunc eget ipsum pellentesque, eget mollis mi congue&#10;Sed sed eros finibus, condimentum eros ac, finibus elit&#10;&#10;Curabitur mauris est, gravida id porttitor vel, condimentum ut metus&#10;Donec orci massa, mattis sed blandit vitae, commodo vitae mi&#10;In hac habitasse platea dictumst&#10;&#10;Sed bibendum felis et blandit lobortis&#10;Nam tincidunt ex justo, eget mollis massa venenatis vitae&#10;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <effect>
+        <DropShadow height="23.0" radius="11.0" spread="0.11811023622047244" width="23.0" />
+      </effect>
+      <stylesheets>
+        <URL value="@../../style/measy.css" />
+      </stylesheets>
+    </TextArea>
+  </children>
+  <stylesheets>
+    <URL value="@../../style/measy.css" />
+  </stylesheets>
+</AnchorPane>
