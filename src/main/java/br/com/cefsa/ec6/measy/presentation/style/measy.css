@@ -1,0 +1,49 @@
+.scroll-pane > .viewport {
+   -fx-text-fill: #ffffff;
+   -fx-background-color: transparent;
+}
+
+.text-area .content {
+   -fx-text-fill: #ffffff;
+   -fx-background-color: transparent;
+}
+
+.text-area {
+   -fx-text-fill: #ffffff;
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-text-fill: #ffffff;
+   -fx-background-color: transparent;
+}
+
+.panel-dark-full {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #2e3131;
+}
+
+.panel-dark-medium {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #3f4242
+}
+
+.panel-dark-low {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #505454
+}
+
+.button-dark-full {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #414545
+}
+
+.button-dark-medium {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #5e6363
+}
+
+.button-dark-low {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #6d7373
+}
