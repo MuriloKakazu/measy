@@ -157,17 +157,17 @@ public class SpotifyClient {
     return request(spotifyApi.searchPlaylists(query).build());
   }
 
-  public void playTrack(@NotNull String trackId) {
-    playTracks(trackId);
+  public void playTrack(@NotNull String trackUri) {
+    playTracks(trackUri);
   }
 
-  public void playTracks(@NotNull String... trackIds) {
-    JsonArray uris = new JsonArrayBuilder().with(trackIds).build();
+  public void playTracks(@NotNull String... trackUris) {
+    JsonArray uris = new JsonArrayBuilder().with(trackUris).build();
     request(spotifyApi.startResumeUsersPlayback().uris(uris).position_ms(0).build());
   }
 
-  public void playContext(@NotNull String contextId) {
-    request(spotifyApi.startResumeUsersPlayback().context_uri(contextId).position_ms(0).build());
+  public void playContext(@NotNull String contextUri) {
+    request(spotifyApi.startResumeUsersPlayback().context_uri(contextUri).position_ms(0).build());
   }
 
   public void resumePlayback() {
