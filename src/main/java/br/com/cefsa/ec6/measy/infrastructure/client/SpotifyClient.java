@@ -1,4 +1,4 @@
-package br.com.cefsa.ec6.measy.data.client;
+package br.com.cefsa.ec6.measy.infrastructure.client;
 
 import br.com.cefsa.ec6.measy.infrastructure.browser.Browser;
 import br.com.cefsa.ec6.measy.infrastructure.builder.JsonArrayBuilder;
