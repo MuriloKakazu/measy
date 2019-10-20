@@ -8,11 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Cache {
   private Map<String, Cacheable> cachedData;
-  private long ttlMillis;
 
   private Cache() {
     this.cachedData = new HashMap<>();
-    this.ttlMillis = 10000;
   }
 
   public Cache put(String key, Cacheable value) {
@@ -37,18 +35,8 @@ public class Cache {
     return cachedData.get(key);
   }
 
-  public Cache setTTL(Long millis) {
-    ttlMillis = millis;
-    return this;
-  }
-
   public Cache expire() {
     cachedData.clear();
-    scheduleExpiration();
     return this;
-  }
-
-  private void scheduleExpiration() {
-    new Job(() -> expire()).runAfter(ttlMillis).repeat(0).run();
   }
 }
