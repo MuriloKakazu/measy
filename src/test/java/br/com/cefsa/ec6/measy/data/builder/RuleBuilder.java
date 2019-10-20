@@ -1,5 +1,6 @@
 package br.com.cefsa.ec6.measy.data.builder;
 
+import br.com.cefsa.ec6.measy.infrastructure.builder.Builder;
 import br.com.six2six.fixturefactory.Rule;
 
 public class RuleBuilder implements Builder<Rule> {

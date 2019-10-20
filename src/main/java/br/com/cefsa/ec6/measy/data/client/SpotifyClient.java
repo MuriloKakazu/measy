@@ -1,9 +1,11 @@
 package br.com.cefsa.ec6.measy.data.client;
 
 import br.com.cefsa.ec6.measy.infrastructure.browser.Browser;
+import br.com.cefsa.ec6.measy.infrastructure.builder.JsonArrayBuilder;
 import br.com.cefsa.ec6.measy.infrastructure.cache.Cache;
 import br.com.cefsa.ec6.measy.infrastructure.definitions.spotify.LoopMode;
 import br.com.cefsa.ec6.measy.infrastructure.exception.NavigationException;
+import com.google.gson.JsonArray;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
@@ -139,8 +141,18 @@ public class SpotifyClient {
     return request(spotifyApi.searchPlaylists(playlistName).build());
   }
 
-  public void play(@NotNull String resourceId) throws IOException, SpotifyWebApiException {
-    request(spotifyApi.startResumeUsersPlayback().context_uri(resourceId).position_ms(0).build());
+  public void playTrack(@NotNull String trackId) throws IOException, SpotifyWebApiException {
+    playTracks(trackId);
+  }
+
+  public void playTracks(@NotNull String... trackIds) throws IOException, SpotifyWebApiException {
+    JsonArray uris = new JsonArrayBuilder().with(trackIds).build();
+
+    request(spotifyApi.startResumeUsersPlayback().uris(uris).position_ms(0).build());
+  }
+
+  public void playContext(@NotNull String contextId) throws IOException, SpotifyWebApiException {
+    request(spotifyApi.startResumeUsersPlayback().context_uri(contextId).position_ms(0).build());
   }
 
   public void resumePlayback() throws IOException, SpotifyWebApiException {
