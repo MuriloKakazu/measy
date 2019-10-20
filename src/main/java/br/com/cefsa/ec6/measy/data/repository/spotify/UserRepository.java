@@ -1,21 +1,22 @@
 package br.com.cefsa.ec6.measy.data.repository.spotify;
 
-import br.com.cefsa.ec6.measy.domain.model.spotify.User;
-import java.util.Collection;
+import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
+import com.wrapper.spotify.model_objects.specification.User;
+import javax.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepository implements SpotifyRepository<User> {
-  @Override
-  public User getById(String id) {
-    return null;
-  }
 
-  public Collection<User> getByName(String name) {
-    return null;
+  @Autowired private SpotifyClient spotifyClient;
+
+  @Override
+  public User getById(@NotNull String id) {
+    return spotifyClient.getUser(id);
   }
 
   public User getCurrentUser() {
-    return null;
+    return spotifyClient.getUser();
   }
 }

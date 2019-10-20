@@ -1,6 +1,6 @@
 package br.com.cefsa.ec6.measy.application.controller.rest.handler;
 
-import br.com.cefsa.ec6.measy.infrastructure.client.SpotifyClient;
+import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

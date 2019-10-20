@@ -1,7 +1,7 @@
 package br.com.cefsa.ec6.measy.infrastructure.configuration;
 
-import br.com.cefsa.ec6.measy.infrastructure.client.MusixmatchClient;
-import br.com.cefsa.ec6.measy.infrastructure.client.SpotifyClient;
+import br.com.cefsa.ec6.measy.infrastructure.client.rest.MusixmatchClient;
+import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
 import org.jmusixmatch.MusixMatchException;
 import org.jmusixmatch.entity.lyrics.Lyrics;
 import org.jmusixmatch.entity.track.Track;

@@ -1,4 +1,4 @@
-package br.com.cefsa.ec6.measy.infrastructure.client;
+package br.com.cefsa.ec6.measy.infrastructure.client.rest;
 
 import org.springframework.stereotype.Component;
 
