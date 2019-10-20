@@ -1,7 +1,7 @@
 package br.com.cefsa.ec6.measy.data.builder.spotify;
 
-import br.com.cefsa.ec6.measy.data.builder.Builder;
 import br.com.cefsa.ec6.measy.domain.model.spotify.Track;
+import br.com.cefsa.ec6.measy.infrastructure.builder.Builder;
 
 public class TrackBuilder implements Builder<Track> {
   private Track track = new Track();
