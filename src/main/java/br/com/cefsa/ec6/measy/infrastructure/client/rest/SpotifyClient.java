@@ -1,4 +1,4 @@
-package br.com.cefsa.ec6.measy.infrastructure.client;
+package br.com.cefsa.ec6.measy.infrastructure.client.rest;
 
 import br.com.cefsa.ec6.measy.infrastructure.browser.Browser;
 import br.com.cefsa.ec6.measy.infrastructure.builder.JsonArrayBuilder;
@@ -6,19 +6,19 @@ import br.com.cefsa.ec6.measy.infrastructure.cache.Cache;
 import br.com.cefsa.ec6.measy.infrastructure.definitions.spotify.LoopMode;
 import br.com.cefsa.ec6.measy.infrastructure.exception.NavigationException;
 import com.google.gson.JsonArray;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlaying;
 import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.IRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
-import java.io.IOException;
 import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 
 @Component
 public class SpotifyClient {
@@ -39,20 +39,27 @@ public class SpotifyClient {
     Browser.navigateTo(authUriRequest.execute());
   }
 
-  public void consumeAuthToken(@NotNull String authToken)
-      throws IOException, SpotifyWebApiException {
-    final AuthorizationCodeCredentials credentials =
-        spotifyApi.authorizationCode(authToken).build().execute();
+  public void consumeAuthToken(@NotNull String authToken) {
+    try {
+      final AuthorizationCodeCredentials credentials =
+          spotifyApi.authorizationCode(authToken).build().execute();
 
-    cache.put("spotifyAuthToken", authToken);
+      cache.put("spotifyAuthToken", authToken);
 
-    auth(credentials);
+      auth(credentials);
+    } catch (Exception e) {
+      throw new RestClientException("Authentication failed", e);
+    }
   }
 
-  public void refresh(@NotNull String refreshToken) throws IOException, SpotifyWebApiException {
-    final AuthorizationCodeCredentials credentials =
-        spotifyApi.authorizationCodeRefresh().build().execute();
-    auth(credentials);
+  public void refresh(@NotNull String refreshToken) {
+    try {
+      final AuthorizationCodeCredentials credentials =
+          spotifyApi.authorizationCodeRefresh().build().execute();
+      auth(credentials);
+    } catch (Exception e) {
+      throw new RestClientException("Token refresh failed", e);
+    }
   }
 
   public void auth(@NotNull AuthorizationCodeCredentials credentials) {
@@ -66,124 +73,132 @@ public class SpotifyClient {
     spotifyApi.setRefreshToken(refreshToken);
   }
 
-  private <T> T request(@NotNull IRequest<T> request) throws IOException, SpotifyWebApiException {
-    return request.execute();
+  private <T> T request(@NotNull IRequest<T> request) {
+    try {
+      return request.execute();
+    } catch (Exception e) {
+      throw new RestClientException("Request failed", e);
+    }
   }
 
-  public Track getTrack(@NotNull String trackId) throws IOException, SpotifyWebApiException {
+  public Track getTrack(@NotNull String trackId) {
     return request(spotifyApi.getTrack(trackId).build());
   }
 
-  public Album getAlbum(@NotNull String albumId) throws IOException, SpotifyWebApiException {
+  public Album getAlbum(@NotNull String albumId) {
     return request(spotifyApi.getAlbum(albumId).build());
   }
 
-  public Playlist getPlaylist(@NotNull String playlistId)
-      throws IOException, SpotifyWebApiException {
+  public Paging<TrackSimplified> getAlbumTracks(@NotNull String albumId) {
+    return request(spotifyApi.getAlbumsTracks(albumId).build());
+  }
+
+  public Playlist getPlaylist(@NotNull String playlistId) {
     return request(spotifyApi.getPlaylist(playlistId).build());
   }
 
-  public Artist getArtist(@NotNull String artistId) throws IOException, SpotifyWebApiException {
+  public Artist getArtist(@NotNull String artistId) {
     return request(spotifyApi.getArtist(artistId).build());
   }
 
-  public User getUser(@NotNull String userId) throws IOException, SpotifyWebApiException {
+  public Paging<AlbumSimplified> getArtistAlbums(@NotNull String artistId) {
+    return request(spotifyApi.getArtistsAlbums(artistId).build());
+  }
+
+  public Track[] getArtistTopTracks(@NotNull String artistId, @NotNull CountryCode countryCode) {
+    return request(spotifyApi.getArtistsTopTracks(artistId, countryCode).build());
+  }
+
+  public User getUser(@NotNull String userId) {
     return request(spotifyApi.getUsersProfile(userId).build());
   }
 
-  public User getUser() throws IOException, SpotifyWebApiException {
+  public User getUser() {
     return request(spotifyApi.getCurrentUsersProfile().build());
   }
 
-  public Paging<SavedAlbum> getUserSavedAlbums() throws IOException, SpotifyWebApiException {
+  public Paging<SavedAlbum> getUserSavedAlbums() {
     return request(spotifyApi.getCurrentUsersSavedAlbums().build());
   }
 
-  public Paging<SavedTrack> getUserSavedTracks() throws IOException, SpotifyWebApiException {
+  public Paging<SavedTrack> getUserSavedTracks() {
     return request(spotifyApi.getUsersSavedTracks().build());
   }
 
-  public Paging<PlaylistSimplified> getUserSavedPlaylists()
-      throws IOException, SpotifyWebApiException {
+  public Paging<PlaylistSimplified> getUserSavedPlaylists() {
     return request(spotifyApi.getListOfCurrentUsersPlaylists().build());
   }
 
-  public Paging<Artist> getUserTopArtists() throws IOException, SpotifyWebApiException {
+  public Paging<Artist> getUserTopArtists() {
     return request(spotifyApi.getUsersTopArtists().build());
   }
 
-  public Paging<Track> getUserTopTracks() throws IOException, SpotifyWebApiException {
+  public Paging<Track> getUserTopTracks() {
     return request(spotifyApi.getUsersTopTracks().build());
   }
 
-  public PagingCursorbased<PlayHistory> getUserPlayHistory()
-      throws IOException, SpotifyWebApiException {
+  public PagingCursorbased<PlayHistory> getUserPlayHistory() {
     return request(spotifyApi.getCurrentUsersRecentlyPlayedTracks().build());
   }
 
-  public Paging<Track> searchTracks(@NotNull String trackName)
-      throws IOException, SpotifyWebApiException {
+  public Paging<Track> searchTracks(@NotNull String trackName) {
     return request(spotifyApi.searchTracks(trackName).build());
   }
 
-  public Paging<AlbumSimplified> searchAlbums(@NotNull String albumName)
-      throws IOException, SpotifyWebApiException {
-    return request(spotifyApi.searchAlbums(albumName).build());
+  public Paging<AlbumSimplified> searchAlbums(@NotNull String query) {
+    return request(spotifyApi.searchAlbums(query).build());
   }
 
-  public Paging<Artist> searchArtists(@NotNull String artistName)
-      throws IOException, SpotifyWebApiException {
-    return request(spotifyApi.searchArtists(artistName).build());
+  public Paging<Artist> searchArtists(@NotNull String query) {
+    return request(spotifyApi.searchArtists(query).build());
   }
 
-  public Paging<PlaylistSimplified> searchPlaylists(@NotNull String playlistName)
-      throws IOException, SpotifyWebApiException {
-    return request(spotifyApi.searchPlaylists(playlistName).build());
+  public Paging<PlaylistSimplified> searchPlaylists(@NotNull String query) {
+    return request(spotifyApi.searchPlaylists(query).build());
   }
 
-  public void playTrack(@NotNull String trackId) throws IOException, SpotifyWebApiException {
+  public void playTrack(@NotNull String trackId) {
     playTracks(trackId);
   }
 
-  public void playTracks(@NotNull String... trackIds) throws IOException, SpotifyWebApiException {
+  public void playTracks(@NotNull String... trackIds) {
     JsonArray uris = new JsonArrayBuilder().with(trackIds).build();
-
     request(spotifyApi.startResumeUsersPlayback().uris(uris).position_ms(0).build());
   }
 
-  public void playContext(@NotNull String contextId) throws IOException, SpotifyWebApiException {
+  public void playContext(@NotNull String contextId) {
     request(spotifyApi.startResumeUsersPlayback().context_uri(contextId).position_ms(0).build());
   }
 
-  public void resumePlayback() throws IOException, SpotifyWebApiException {
+  public void resumePlayback() {
     request(spotifyApi.startResumeUsersPlayback().build());
   }
 
-  public void setShuffle(Boolean shuffle) throws IOException, SpotifyWebApiException {
+  public void setShuffle(Boolean shuffle) {
     request(spotifyApi.toggleShuffleForUsersPlayback(shuffle).build());
   }
 
-  public void setLoop(LoopMode loopMode) throws IOException, SpotifyWebApiException {
+  public void setLoop(LoopMode loopMode) {
     request(spotifyApi.setRepeatModeOnUsersPlayback(loopMode.getState()).build());
   }
 
-  public void pausePlayback() throws IOException, SpotifyWebApiException {
+  public void pausePlayback() {
     request(spotifyApi.pauseUsersPlayback().build());
   }
 
-  public void nextTrack() throws IOException, SpotifyWebApiException {
+  public void nextTrack() {
     request(spotifyApi.skipUsersPlaybackToNextTrack().build());
   }
 
-  public void previousTrack() throws IOException, SpotifyWebApiException {
+  public void previousTrack() {
     request(spotifyApi.skipUsersPlaybackToPreviousTrack().build());
   }
 
-  public CurrentlyPlaying getCurrentTrack() throws IOException, SpotifyWebApiException {
+  public CurrentlyPlaying getCurrentTrack() {
     return request(spotifyApi.getUsersCurrentlyPlayingTrack().build());
   }
 
-  public CurrentlyPlayingContext getPlaybackInfo() throws IOException, SpotifyWebApiException {
+  public CurrentlyPlayingContext getPlaybackInfo() {
     return request(spotifyApi.getInformationAboutUsersCurrentPlayback().build());
   }
 }

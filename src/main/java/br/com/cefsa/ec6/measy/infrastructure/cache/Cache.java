@@ -1,6 +1,5 @@
 package br.com.cefsa.ec6.measy.infrastructure.cache;
 
-import br.com.cefsa.ec6.measy.infrastructure.async.Job;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Component;
