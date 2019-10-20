@@ -34,7 +34,9 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    fxmlLoader.setLocation(new File("./src/main/java/br/com/cefsa/ec6/measy/presentation/component/fxml/Client.fxml").toURL());
+    fxmlLoader.setLocation(
+        new File("./src/main/java/br/com/cefsa/ec6/measy/presentation/component/fxml/Client.fxml")
+            .toURL());
     rootNode = fxmlLoader.load();
 
     stage.setTitle("Measy");

@@ -7,13 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Cache {
-
-  private static final Cache instance = new Cache();
-
-  public static Cache getInstance() {
-    return instance;
-  }
-
   private Map<String, Cacheable> cachedData;
   private long ttlMillis;
 
@@ -25,6 +18,10 @@ public class Cache {
   public Cache put(String key, Cacheable value) {
     cachedData.put(key, value);
     return this;
+  }
+
+  public <T> Cache put(String key, T value) {
+    return put(key, new CacheableValue<T>(value));
   }
 
   public Cache remove(String key) {

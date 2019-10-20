@@ -8,3 +8,10 @@ spotify:
             user-read-playback-state,user-read-private,user-read-email,user-library-modify,
             user-library-read,user-follow-modify,user-follow-read,user-read-recently-played,
             user-top-read,app-remote-control'
+
+musixmatch:
+  api:
+    key: ${MUSIXMATCH_API_KEY}
+  client:
+    settings:
+      default-page-size: 20
