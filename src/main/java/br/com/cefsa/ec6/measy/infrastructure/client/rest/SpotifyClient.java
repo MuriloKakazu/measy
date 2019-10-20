@@ -14,6 +14,9 @@ import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.IRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -192,6 +195,10 @@ public class SpotifyClient {
 
   public void previousTrack() {
     request(spotifyApi.skipUsersPlaybackToPreviousTrack().build());
+  }
+
+  public void setVolume(@Min(0) @Max(100) Integer volumePercentage) {
+    request(spotifyApi.setVolumeForUsersPlayback(volumePercentage).build());
   }
 
   public CurrentlyPlaying getCurrentTrack() {
