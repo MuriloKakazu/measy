@@ -37,9 +37,9 @@ public class SpotifyPlayer {
         spotifyClient.playTrack(track.getUri());
     }
 
-    public void playUri(@NotBlank String uri) {
+    public void playUri(@NotNull String uri) {
         if (isTrackUri(uri)) spotifyClient.playTrack(uri);
-        spotifyClient.playContext(uri);
+        else spotifyClient.playContext(uri);
     }
 
     public void resume() {

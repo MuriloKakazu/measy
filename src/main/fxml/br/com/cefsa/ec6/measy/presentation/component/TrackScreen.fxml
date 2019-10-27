@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="637.0" prefWidth="912.0" styleClass="panel-dark-low" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.TrackScreenController">
+  <children>
+    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <GridPane alignment="TOP_LEFT" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-full" VBox.vgrow="SOMETIMES">
+          <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+              <image>
+                <Image url="@../../assets/sample/album_0.png" />
+              </image>
+              <GridPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+              </GridPane.margin>
+            </ImageView>
+            <GridPane prefHeight="-1.0" prefWidth="207.0" vgap="5.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+              <children>
+                <Label text="Track name" textFill="WHITE" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+                  <font>
+                    <Font size="20.0" />
+                  </font>
+                  <GridPane.margin>
+                    <Insets bottom="5.0" top="5.0" />
+                  </GridPane.margin>
+                </Label>
+                <Label onMouseClicked="#onAlbumNameMouseClicked" text="Album name" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                    <Insets bottom="2.0" top="5.0" />
+                  </GridPane.margin>
+                </Label>
+                <Label onMouseClicked="#onArtistNameMouseClicked" text="Artist name" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                  </GridPane.margin>
+                </Label>
+                <fx:include source="refactored/SpotifyPlayButton.fxml" maxHeight="25.0" maxWidth="82.0" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="-1.0" />
+              </columnConstraints>
+              <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x3" />
+              </padding>
+              <rowConstraints>
+                <RowConstraints fillHeight="true" maxHeight="-Infinity" minHeight="10.0" prefHeight="-1.0" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="-1.0" minHeight="10.0" prefHeight="-1.0" vgrow="ALWAYS" />
+              </rowConstraints>
+              <GridPane.margin>
+                <Insets bottom="10.0" top="10.0" />
+              </GridPane.margin>
+            </GridPane>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="-1.0" minWidth="10.0" prefWidth="-1.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="207.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="200.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+          <stylesheets>
+            <URL value="@../../style/measy/measy.css" />
+          </stylesheets>
+        </GridPane>
+        <GridPane alignment="BOTTOM_LEFT" prefHeight="360.0" prefWidth="877.0" styleClass="panel-dark-medium" VBox.vgrow="ALWAYS">
+          <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <children>
+                <Label text="Lyrics" textFill="WHITE">
+                  <font>
+                    <Font size="18.0" fx:id="x2" />
+                  </font>
+                  <VBox.margin>
+                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" fx:id="x1" />
+                  </VBox.margin>
+                </Label>
+                <fx:include source="Lyrics.fxml" VBox.margin="$x1" VBox.vgrow="ALWAYS" />
+              </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <children>
+                <Label font="$x2" text="Video" textFill="WHITE">
+                  <VBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x3" />
+                  </VBox.margin>
+                </Label>
+                <fx:include source="YouTubeClip.fxml" maxHeight="400.0" maxWidth="500.0" prefHeight="250.0" VBox.margin="$x3" />
+              </children>
+            </VBox>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+          </rowConstraints>
+          <stylesheets>
+            <URL value="@../../style/measy/measy.css" />
+          </stylesheets>
+        </GridPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../style/measy/measy.css" />
+  </stylesheets>
+</AnchorPane>

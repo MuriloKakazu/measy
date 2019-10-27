@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="-1.0" prefWidth="700.0" styleClass="panel-dark-low" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.TrackRowController">
+  <children>
+    <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <fx:include fx:id="playButton" source="SpotifyPlayButton.fxml" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+        <Label fx:id="duration" alignment="CENTER_LEFT" text="00:00" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+          <GridPane.margin>
+            <Insets left="20.0" right="20.0" />
+          </GridPane.margin>
+        </Label>
+        <GridPane GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+          <children>
+            <Label fx:id="title" text="Track name" textFill="WHITE" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <GridPane.margin>
+                <Insets left="20.0" fx:id="x1" />
+              </GridPane.margin>
+            </Label>
+            <Label fx:id="albumName" text="Album name" textFill="WHITE" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="0" />
+            <Label fx:id="artistsNames" prefWidth="-1.0" text="Artist name" textFill="WHITE" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="0" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-1.0" minWidth="-1.0" percentWidth="33.334" prefWidth="-1.0" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.333" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.333" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" maxWidth="96.0" minWidth="96.0" prefWidth="96.0" />
+        <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints hgrow="NEVER" minWidth="98.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="-1.0" minHeight="34.0" prefHeight="34.0" vgrow="ALWAYS" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+  <stylesheets>
+    <URL value="@../../../../../../../../../java/br/com/cefsa/ec6/measy/presentation/style/measy/panel-dark-low.css" />
+  </stylesheets>
+</AnchorPane>
