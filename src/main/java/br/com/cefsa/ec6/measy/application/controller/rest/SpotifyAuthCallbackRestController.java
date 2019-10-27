@@ -1,14 +1,10 @@
 package br.com.cefsa.ec6.measy.application.controller.rest;
 
 import br.com.cefsa.ec6.measy.application.controller.rest.handler.SpotifyAuthCallbackRestControllerHandler;
-import br.com.cefsa.ec6.measy.data.repository.spotify.TrackRepository;
-import com.wrapper.spotify.model_objects.specification.Track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
 
 @RestController
 public class SpotifyAuthCallbackRestController {

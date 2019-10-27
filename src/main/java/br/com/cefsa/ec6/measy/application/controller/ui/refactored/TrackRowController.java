@@ -2,61 +2,57 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
 import br.com.cefsa.ec6.measy.infrastructure.util.MillisTimeFormatter;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
-import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 @Controller
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TrackRowController {
 
-    @FXML private Label title;
-    @FXML private Label artistsNames;
-    @FXML private Label albumName;
-    @FXML private Label duration;
-    @FXML private SpotifyPlayButtonController playButtonController;
+  @FXML private Label title;
+  @FXML private Label artistsNames;
+  @FXML private Label albumName;
+  @FXML private Label duration;
+  @FXML private SpotifyPlayButtonController playButtonController;
 
-    public void setTrack(Track track) {
-        setTitle(track.getName());
-        setArtists(Arrays.asList(track.getArtists()));
-        setAlbumName(track.getAlbum().getName());
-        setDuration(track.getDurationMs());
-        playButtonController.setSpotifyUri(track.getUri());
-    }
+  public void setTrack(Track track) {
+    setTitle(track.getName());
+    setArtists(Arrays.asList(track.getArtists()));
+    setAlbumName(track.getAlbum().getName());
+    setDuration(track.getDurationMs());
+    playButtonController.setSpotifyUri(track.getUri());
+  }
 
-    public void setTrack(TrackSimplified track) {
-        setTitle(track.getName());
-        setArtists(Arrays.asList(track.getArtists()));
-        setAlbumName("");
-        setDuration(track.getDurationMs());
-        playButtonController.setSpotifyUri(track.getUri());
-    }
+  public void setTrack(TrackSimplified track) {
+    setTitle(track.getName());
+    setArtists(Arrays.asList(track.getArtists()));
+    setAlbumName("");
+    setDuration(track.getDurationMs());
+    playButtonController.setSpotifyUri(track.getUri());
+  }
 
-    private void setTitle(String title) {
-        this.title.setText(title);
-    }
+  private void setTitle(String title) {
+    this.title.setText(title);
+  }
 
-    private void setArtists(Collection<ArtistSimplified> artists) {
-        this.artistsNames.setText(artists.stream()
-                .map(artist -> artist.getName())
-                .collect(Collectors.joining(", ")));
-    }
+  private void setArtists(Collection<ArtistSimplified> artists) {
+    this.artistsNames.setText(
+        artists.stream().map(artist -> artist.getName()).collect(Collectors.joining(", ")));
+  }
 
-    private void setAlbumName(String albumName) {
-        this.albumName.setText(albumName);
-    }
+  private void setAlbumName(String albumName) {
+    this.albumName.setText(albumName);
+  }
 
-    private void setDuration(Integer duration) {
-        this.duration.setText(MillisTimeFormatter.format(duration));
-    }
-
+  private void setDuration(Integer duration) {
+    this.duration.setText(MillisTimeFormatter.format(duration));
+  }
 }

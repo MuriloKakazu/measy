@@ -13,20 +13,20 @@ import org.springframework.stereotype.Controller;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SpotifyPlayButtonController {
 
-    @Autowired private EventBus eventBus;
+  @Autowired private EventBus eventBus;
 
-    private String spotifyUri;
+  private String spotifyUri;
 
-    public String getSpotifyUri() {
-        return spotifyUri;
-    }
+  public String getSpotifyUri() {
+    return spotifyUri;
+  }
 
-    public void setSpotifyUri(String spotifyUri) {
-        this.spotifyUri = spotifyUri;
-    }
+  public void setSpotifyUri(String spotifyUri) {
+    this.spotifyUri = spotifyUri;
+  }
 
-    @FXML
-    private void onMouseClick(MouseEvent event) {
-        eventBus.post(new ChangePlaybackContextEvent(getSpotifyUri()));
-    }
+  @FXML
+  private void onMouseClick(MouseEvent event) {
+    eventBus.post(new ChangePlaybackContextEvent(getSpotifyUri()));
+  }
 }
