@@ -4,13 +4,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 public class SpringContextLocator {
 
-    private static ConfigurableApplicationContext CONTEXT;
+  private static ConfigurableApplicationContext CONTEXT;
 
-    public static void setApplicationContext(ConfigurableApplicationContext applicationContext) {
-        CONTEXT = applicationContext;
-    }
+  public static void setApplicationContext(ConfigurableApplicationContext applicationContext) {
+    CONTEXT = applicationContext;
+  }
 
-    public static ConfigurableApplicationContext getApplicationContext() {
-        return CONTEXT;
-    }
+  public static ConfigurableApplicationContext getApplicationContext() {
+    return CONTEXT;
+  }
 }

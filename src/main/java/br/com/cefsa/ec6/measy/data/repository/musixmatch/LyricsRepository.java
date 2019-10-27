@@ -10,17 +10,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LyricsRepository {
 
-    @Autowired private MusixmatchClient musixmatchClient;
+  @Autowired private MusixmatchClient musixmatchClient;
 
-    public Lyrics getLyricsFromTrack(String trackName, String tackArtistName) {
-        try {
+  public Lyrics getLyricsFromTrack(String trackName, String tackArtistName) {
+    try {
 
-            Track track = musixmatchClient.getTrack(trackName, tackArtistName);
-            return musixmatchClient.getLyrics(track.getTrack().getTrackId());
+      Track track = musixmatchClient.getTrack(trackName, tackArtistName);
+      return musixmatchClient.getLyrics(track.getTrack().getTrackId());
 
-        } catch (MusixMatchException e) {
-            throw new RuntimeException(e);
-        }
+    } catch (MusixMatchException e) {
+      throw new RuntimeException(e);
     }
-
+  }
 }
