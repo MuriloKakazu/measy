@@ -20,11 +20,14 @@ public class TestPurposeEventListener {
   @EventListener
   public void onRefresh(final ApplicationReadyEvent event) {
     try {
+
+      spotifyClient.requestAuthToken();
+
       Track track = musixmatchClient.getTrack("No Air", "Jordin Sparks");
       Lyrics lyrics = musixmatchClient.getLyrics(track.getTrack().getTrackId());
 
       System.out.println();
-    } catch (MusixMatchException e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
