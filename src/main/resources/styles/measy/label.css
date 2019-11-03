@@ -1,0 +1,6 @@
+.label {
+   -fx-text-fill: #DDDDDD;
+}
+.label:hover {
+   -fx-text-fill: #FFFFFF;
+}

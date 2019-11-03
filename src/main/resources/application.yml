@@ -1,6 +1,9 @@
 application:
-  fxml:
-    base-path: './src/main/fxml/br/com/cefsa/ec6/measy/presentation/component/'
+  resources:
+    fxml:
+      relative-path: '/fxml/{fileName}.fxml'
+    icons:
+      relative-path: '/icons/{fileName}.png'
 
 spotify:
   client:

@@ -4,6 +4,7 @@ import br.com.cefsa.ec6.measy.infrastructure.configuration.FXMLScannerConfigurat
 import br.com.cefsa.ec6.measy.infrastructure.util.SpringContextLocator;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -24,12 +25,17 @@ public class FXMLLoaderBuilder implements Builder<FXMLLoader> {
   public FXMLLoaderBuilder withFilePath(String filePath) {
     try {
 
-      fxmlLoader.setLocation(new File(filePath).toURL());
+      withUrl(new File(filePath).toURL());
       return this;
 
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public FXMLLoaderBuilder withUrl(URL url) {
+    fxmlLoader.setLocation(url);
+    return this;
   }
 
   public FXMLLoaderBuilder springManaged() {

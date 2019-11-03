@@ -1,0 +1,8 @@
+.label {
+   -fx-text-fill: #DDDDDD;
+   -fx-underline: false;
+}
+.label:hover {
+   -fx-text-fill: #FFFFFF;
+   -fx-underline: true;
+}

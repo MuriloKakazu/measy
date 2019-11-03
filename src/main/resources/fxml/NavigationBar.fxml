@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
+
+<AnchorPane prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-full" stylesheets="@../styles/measy/panel-dark-full.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.NavigationBarController">
+  <children>
+    <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+            <AnchorPane maxHeight="20.0" GridPane.columnIndex="1">
+               <children>
+                  <AnchorPane layoutX="-14.0" layoutY="-1.0" />
+                   <CustomTextField layoutX="-27.0" layoutY="-5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                   <left>
+                       <Label styleClass="searchBoxLabel">
+                           <graphic>
+                               <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                   <image>
+                                       <Image url="@../icons/search_black.png" />
+                                   </image>
+                               </ImageView>
+                           </graphic>
+                       </Label>
+                   </left>
+               </CustomTextField>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            
+            
+            </AnchorPane>
+        <HBox prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <children>
+            <fx:include source="PreviousPageButton.fxml" HBox.hgrow="NEVER" />
+            <fx:include source="NextPageButton.fxml" HBox.hgrow="NEVER" />
+          </children>
+        </HBox>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" minWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="400.0" minWidth="-1.0" prefWidth="-1.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+</AnchorPane>

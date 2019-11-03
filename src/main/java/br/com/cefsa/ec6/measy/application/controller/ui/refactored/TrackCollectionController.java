@@ -1,6 +1,6 @@
 package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
-import br.com.cefsa.ec6.measy.infrastructure.builder.FXMLLoaderBuilder;
+import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
 import java.io.IOException;
@@ -18,15 +18,15 @@ public class TrackCollectionController {
   @FXML private CollectionController tracksController;
 
   public void addTrack(Track track) {
-    final FXMLLoader trackRow = appendTrack();
-    final TrackRowController trackRowController = trackRow.getController();
+    final FXMLLoader trackRowLoader = appendTrack();
+    final TrackRowController trackRowController = trackRowLoader.getController();
 
     trackRowController.setTrack(track);
   }
 
   public void addTrack(TrackSimplified track) {
-    final FXMLLoader trackRow = appendTrack();
-    final TrackRowController trackRowController = trackRow.getController();
+    final FXMLLoader trackRowLoader = appendTrack();
+    final TrackRowController trackRowController = trackRowLoader.getController();
 
     trackRowController.setTrack(track);
   }
@@ -34,13 +34,12 @@ public class TrackCollectionController {
   private FXMLLoader appendTrack() {
     try {
 
-      final FXMLLoader trackRow =
-          new FXMLLoaderBuilder().springManaged().withFileName("refactored/TrackRow.fxml").build();
+      final FXMLLoader trackRowLoader = FXMLLoaderFactory.create("TrackRow");
 
-      final Parent trackRowNode = trackRow.load();
+      final Parent trackRowNode = trackRowLoader.load();
       tracksController.addChild(trackRowNode);
 
-      return trackRow;
+      return trackRowLoader;
 
     } catch (IOException e) {
       throw new RuntimeException(e);

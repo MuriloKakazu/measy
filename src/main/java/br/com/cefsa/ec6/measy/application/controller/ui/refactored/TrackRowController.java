@@ -1,12 +1,12 @@
 package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
-import br.com.cefsa.ec6.measy.infrastructure.util.MillisTimeFormatter;
+import br.com.cefsa.ec6.measy.infrastructure.util.formatter.ArtistFormatter;
+import br.com.cefsa.ec6.measy.infrastructure.util.formatter.MillisTimeFormatter;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -44,8 +44,7 @@ public class TrackRowController {
   }
 
   private void setArtists(Collection<ArtistSimplified> artists) {
-    this.artistsNames.setText(
-        artists.stream().map(artist -> artist.getName()).collect(Collectors.joining(", ")));
+    this.artistsNames.setText(ArtistFormatter.formatSimplifiedArtistsNames(artists));
   }
 
   private void setAlbumName(String albumName) {
