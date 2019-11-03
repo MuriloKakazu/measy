@@ -15,6 +15,7 @@ public class RecordHeaderController {
 
   @FXML private Label recordType;
   @FXML private Label title;
+  @FXML private Label subtitle;
   @FXML private ImageView image;
   @FXML private SpotifyPlayButtonController playButtonController;
 
@@ -28,6 +29,10 @@ public class RecordHeaderController {
 
   public void setTitle(@NotNull String title) {
     this.title.setText(title);
+  }
+
+  public void setSubtitle(@NotNull String subtitle) {
+    this.subtitle.setText(subtitle);
   }
 
   public void setContextUri(@NotNull String contextUri) {

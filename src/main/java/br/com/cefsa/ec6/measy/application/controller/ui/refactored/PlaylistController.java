@@ -17,6 +17,7 @@ public class PlaylistController {
   public void setPlaylist(Playlist playlist) {
     headerController.setRecordType(Playlist.class.getSimpleName());
     headerController.setTitle(playlist.getName());
+    headerController.setSubtitle("By ".concat(playlist.getOwner().getDisplayName()));
     headerController.setImage(Arrays.stream(playlist.getImages()).findFirst().get().getUrl());
     headerController.setContextUri(playlist.getUri());
 
