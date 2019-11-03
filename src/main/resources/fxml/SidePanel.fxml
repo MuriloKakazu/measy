@@ -40,7 +40,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
-                          <fx:include fx:id="playlists" source="Collection.fxml" VBox.vgrow="ALWAYS" />
+                          <fx:include fx:id="playlists" source="Collection.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </AnchorPane>
                     </content>
