@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-medium" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.CollectionController">
+<AnchorPane prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-medium" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.CollectionController">
   <children>
-    <VBox fx:id="items" prefHeight="-1.0" prefWidth="600.0" spacing="3.0" styleClass="panel-dark-medium" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-      </children>
-      <padding>
-        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-      </padding>
-      <stylesheets>
-        <URL value="@../styles/measy/panel-dark-medium.css" />
-      </stylesheets>
-    </VBox>
+      <ScrollPane fitToWidth="true" stylesheets="@../styles/measy/scroll-panel-transparent.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0">
+            <children>
+              <VBox fx:id="items" prefHeight="-1.0" spacing="3.0" styleClass="panel-dark-medium" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                </padding>
+                <stylesheets>
+                  <URL value="@../styles/measy/panel-dark-medium.css" />
+                </stylesheets>
+              </VBox>
+            </children>
+          </AnchorPane>
+        </content>
+      </ScrollPane>
   </children>
   <stylesheets>
     <URL value="@../styles/measy/panel-dark-medium.css" />

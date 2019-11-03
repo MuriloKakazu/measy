@@ -20,7 +20,7 @@
             <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <children>
                 <fx:include source="NavigationBar.fxml" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <ScrollPane fx:id="scrollableContent" fitToWidth="true" styleClass="panel-dark-low" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                        <ScrollPane fx:id="scrollableContent" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="panel-dark-low" vbarPolicy="NEVER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                            <stylesheets>
                               <URL value="@../styles/measy/scroll-panel-transparent.css" />
                               <URL value="@../styles/measy/panel-dark-low.css" />
