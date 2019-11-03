@@ -4,26 +4,35 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="self" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.HomeController">
+<AnchorPane fx:id="self" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.HomeController">
    <children>
-      <VBox layoutX="105.0" layoutY="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label text="Your Favorites" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <padding>
-                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
-               </padding>
-            </Label>
-            <FlowPane fx:id="userFavoriteTracks" alignment="CENTER" columnHalignment="CENTER" hgap="2.0" prefWrapLength="${self.parent.width}" vgap="2.0" />
-         </children>
-      </VBox>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" stylesheets="@../styles/measy/scroll-panel-transparent.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Your Favorites" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <FlowPane fx:id="userFavoriteTracks" alignment="CENTER" columnHalignment="CENTER" hgap="2.0" prefWrapLength="${self.parent.width}" vgap="2.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
    <stylesheets>
       <URL value="@../styles/measy/panel-dark-low.css" />

@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,32 +16,46 @@
         <AnchorPane prefHeight="50.0" prefWidth="200.0" />
       </bottom>
       <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+        <AnchorPane>
           <children>
-            <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <children>
-                <fx:include source="NavigationBar.fxml" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <ScrollPane fx:id="scrollableContent" fitToWidth="true" styleClass="panel-dark-low" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-                           <stylesheets>
-                              <URL value="@../styles/measy/scroll-panel-transparent.css" />
-                              <URL value="@../styles/measy/panel-dark-low.css" />
-                           </stylesheets>
-                        </ScrollPane>
-              </children>
-              <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="-1.0" prefHeight="-1.0" vgrow="NEVER" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-              </rowConstraints>
-            </GridPane>
+                  <SplitPane dividerPositions="0.29797979797979796" styleClass="panel-dark-full" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane maxWidth="350.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
+                           <children>
+                          <fx:include source="SidePanel.fxml" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <fx:include source="NavigationBar.fxml" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <ScrollPane fx:id="scrollableContent" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="panel-dark-low" vbarPolicy="NEVER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                       <stylesheets>
+                                          <URL value="@../styles/measy/scroll-panel-transparent.css" />
+                                          <URL value="@../styles/measy/panel-dark-low.css" />
+                                       </stylesheets>
+                                    </ScrollPane>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="-1.0" prefHeight="-1.0" vgrow="NEVER" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                          </rowConstraints>
+                        </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                     <stylesheets>
+                        <URL value="@../styles/measy/panel-dark-full.css" />
+                        <URL value="@../styles/measy/split-panel.css" />
+                     </stylesheets>
+                  </SplitPane>
           </children>
         </AnchorPane>
       </center>
-      <left>
-        <fx:include source="SidePanel.fxml" />
-      </left>
     </BorderPane>
   </children>
 </AnchorPane>

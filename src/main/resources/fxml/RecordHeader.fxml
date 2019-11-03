@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,13 +19,16 @@
       <children>
         <GridPane alignment="TOP_LEFT" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-full" VBox.vgrow="NEVER">
           <children>
-            <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+            <ImageView fx:id="image" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
               <image>
                 <Image backgroundLoading="false" url="@../sample/artist_0.jpg" />
               </image>
               <GridPane.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
               </GridPane.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
             </ImageView>
             <GridPane prefHeight="-1.0" prefWidth="207.0" vgap="5.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
               <children>
