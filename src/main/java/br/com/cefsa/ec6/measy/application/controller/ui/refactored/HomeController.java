@@ -35,7 +35,7 @@ public class HomeController {
       final RecordCardController cardController = trackCardLoader.getController();
       cardController.setTitle(TrackFormatter.formatTrackArtistAndTitle(track));
       cardController.setImage(
-          ImagePicker.pickLowestResolutionImage(Arrays.asList(track.getAlbum().getImages()))
+          ImagePicker.pickHighestResolutionImage(Arrays.asList(track.getAlbum().getImages()))
               .getUrl());
       cardController.setContextUri(track.getUri());
 

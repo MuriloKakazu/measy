@@ -33,11 +33,11 @@ public class SpotifyAuthEventListener implements EventListener {
         () -> {
           try {
 
-            FXMLLoader homeLoader = FXMLLoaderFactory.create("Home");
-            Node homeNode = homeLoader.load();
-            HomeController homeController = homeLoader.getController();
-            Collection<Track> tracks = Arrays.asList(spotifyClient.getUserTopTracks().getItems());
-            tracks.forEach(track -> homeController.addFavoriteTrack(track));
+//            FXMLLoader homeLoader = FXMLLoaderFactory.create("Home");
+//            Node homeNode = homeLoader.load();
+//            HomeController homeController = homeLoader.getController();
+//            Collection<Track> tracks = Arrays.asList(spotifyClient.getUserTopTracks().getItems());
+//            tracks.forEach(track -> homeController.addFavoriteTrack(track));
 
 //            FXMLLoader playlistLoader = FXMLLoaderFactory.create("Playlist");
 //            Node playlist = playlistLoader.load();
@@ -45,7 +45,13 @@ public class SpotifyAuthEventListener implements EventListener {
 //
 //            playlistController.setPlaylist(spotifyClient.getPlaylist("0PW1vmagj613BHpxEAvlFI"));
 
-            Node nodeToSet = homeNode;
+            FXMLLoader albumLoader = FXMLLoaderFactory.create("Album");
+            Node album = albumLoader.load();
+            AlbumController albumController = albumLoader.getController();
+
+            albumController.setAlbum(spotifyClient.getAlbum("2QgGoL5VSQhPHudTObS7zK"));
+
+            Node nodeToSet = album;
 
             clientController.setContent((AnchorPane) nodeToSet);
 
