@@ -19,7 +19,7 @@ public class HyperlinkFactory {
       final HyperlinkController hyperlinkController = hyperlinkLoader.getController();
 
       hyperlinkController.setUri(uri);
-      hyperlinkController.getLabel().setText(text);
+      hyperlinkController.setText(text);
       return hyperlinkNode;
 
     } catch (IOException e) {

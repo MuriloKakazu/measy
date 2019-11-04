@@ -23,8 +23,12 @@ public class HyperlinkController {
     clientController.navigateToUri(getUri());
   }
 
-  public Label getLabel() {
-    return label;
+  public String getText() {
+    return label.getText();
+  }
+
+  public void setText(String text) {
+    label.setText(text);
   }
 
   public String getUri() {

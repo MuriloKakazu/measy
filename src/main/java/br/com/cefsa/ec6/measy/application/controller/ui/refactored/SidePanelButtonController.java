@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -16,12 +17,17 @@ import org.springframework.stereotype.Controller;
 public class SidePanelButtonController {
 
   @Autowired private IconURLFinder iconURLFinder;
+  @Autowired private ClientController clientController;
 
   @FXML private ImageView icon;
-
   @FXML private Label label;
 
   private String resourceUri;
+
+  @FXML
+  private void onMouseClick(MouseEvent event) {
+    clientController.navigateToUri(resourceUri);
+  }
 
   public void setText(String text) {
     label.setText(text);

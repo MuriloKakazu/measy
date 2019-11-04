@@ -61,7 +61,7 @@ public class TrackRowController {
   }
 
   public void setTitle(String title) {
-    trackNameController.getLabel().setText(title);
+    trackNameController.setText(title);
   }
 
   public void setArtists(Collection<ArtistSimplified> artists) {
@@ -71,7 +71,7 @@ public class TrackRowController {
       Node artistNode = hyperlinkFactory.create(artist.getName(), artist.getUri());
       artistsContainer.getChildren().add(artistNode);
 
-      Node separator = hyperlinkFactory.create(", ", artist.getUri());
+      Node separator = hyperlinkFactory.create(", ", "");
       artistsContainer.getChildren().add(separator);
     }
 
@@ -79,7 +79,7 @@ public class TrackRowController {
   }
 
   public void setAlbumName(String albumName) {
-    albumNameController.getLabel().setText(albumName);
+    albumNameController.setText(albumName);
   }
 
   public void setDuration(Integer duration) {
