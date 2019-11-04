@@ -4,14 +4,23 @@ import com.wrapper.spotify.model_objects.specification.Image;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.function.Supplier;
 
 public class ImagePicker {
 
+  public static final Image PLACEHOLDER = new Image.Builder()
+      .setUrl("placeholders/no_media.jpg")
+      .setHeight(300)
+      .setWidth(300)
+      .build();
+
   public static Image pickHighestResolutionImage(Collection<Image> images) {
+    if (images.isEmpty()) return PLACEHOLDER;
     return Collections.max(images, Comparator.comparing(image -> image.getWidth()));
   }
 
   public static Image pickLowestResolutionImage(Collection<Image> images) {
+    if (images.isEmpty()) return PLACEHOLDER;
     return Collections.min(images, Comparator.comparing(image -> image.getWidth()));
   }
 }

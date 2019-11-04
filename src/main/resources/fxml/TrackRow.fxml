@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane prefHeight="-1.0" prefWidth="700.0" styleClass="panel-dark-low" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.TrackRowController">
@@ -19,23 +20,39 @@
           </GridPane.margin>
         </Label>
         <GridPane GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
-          <children>
-            <Label fx:id="title" stylesheets="@../styles/measy/label-hyperlink.css" text="Track name" textFill="WHITE" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
-              <GridPane.margin>
-                <Insets left="20.0" fx:id="x1" />
-              </GridPane.margin>
-            </Label>
-            <Label fx:id="albumName" stylesheets="@../styles/measy/label-hyperlink.css" text="Album name" textFill="WHITE" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="0" />
-            <Label fx:id="artistsNames" prefWidth="-1.0" stylesheets="@../styles/measy/label-hyperlink.css" text="Artist name" textFill="WHITE" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="0" />
-          </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-1.0" minWidth="-1.0" percentWidth="33.334" prefWidth="-1.0" />
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.333" />
+            <ColumnConstraints fillWidth="false" percentWidth="33.33" />
             <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.333" />
           </columnConstraints>
           <rowConstraints>
-            <RowConstraints maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" valignment="CENTER" vgrow="SOMETIMES" />
           </rowConstraints>
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <fx:include fx:id="trackName" maxWidth="-Infinity" source="Hyperlink.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </AnchorPane>
+                  <HBox fx:id="artistsContainer" GridPane.columnIndex="1" />
+                  <AnchorPane GridPane.columnIndex="2">
+                     <children>
+                        <fx:include fx:id="albumName" source="Hyperlink.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="2" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </AnchorPane>
+               </children>
         </GridPane>
       </children>
       <columnConstraints>

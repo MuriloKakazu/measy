@@ -2,6 +2,7 @@ package br.com.cefsa.ec6.measy.application.event.listener;
 
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.*;
 import br.com.cefsa.ec6.measy.application.event.SpotifyAuthEvent;
+import br.com.cefsa.ec6.measy.application.factory.AlbumComponentFactory;
 import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import br.com.cefsa.ec6.measy.infrastructure.util.FXThreadHelper;
@@ -49,7 +50,7 @@ public class SpotifyAuthEventListener implements EventListener {
             Node album = albumLoader.load();
             AlbumController albumController = albumLoader.getController();
 
-            albumController.setAlbum(spotifyClient.getAlbum("2QgGoL5VSQhPHudTObS7zK"));
+            albumController.setAlbum(spotifyClient.getAlbum("011iiGYooEuNN0c4770O6q"));
 
             Node nodeToSet = album;
 
