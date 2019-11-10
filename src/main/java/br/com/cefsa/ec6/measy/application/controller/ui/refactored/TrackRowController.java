@@ -33,37 +33,6 @@ public class TrackRowController {
   @FXML private HyperlinkController albumNameController;
   @FXML private SpotifyPlayButtonController playButtonController;
 
-  public void setTrack(Track track) {
-    setTitle(track.getName());
-    setTrackUri(track.getUri());
-
-    setArtists(Arrays.asList(track.getArtists()));
-
-    setAlbumName(track.getAlbum().getName());
-    setAlbumUri(track.getAlbum().getUri());
-
-    setDuration(track.getDurationMs());
-
-    playButtonController.setSpotifyUri(track.getUri());
-  }
-
-  public void setTrack(TrackSimplified track) {
-    setTitle(track.getName());
-    setTrackUri(track.getUri());
-
-    setArtists(Arrays.asList(track.getArtists()));
-
-    setAlbumName("");
-
-    setDuration(track.getDurationMs());
-
-    playButtonController.setSpotifyUri(track.getUri());
-  }
-
-  public void setTitle(String title) {
-    trackNameController.setText(title);
-  }
-
   public void setArtists(Collection<ArtistSimplified> artists) {
     artistsContainer.getChildren().clear();
 
@@ -78,6 +47,10 @@ public class TrackRowController {
     artistsContainer.getChildren().remove(artistsContainer.getChildren().size() - 1);
   }
 
+  public void setTitle(String title) {
+    trackNameController.setText(title);
+  }
+
   public void setAlbumName(String albumName) {
     albumNameController.setText(albumName);
   }
@@ -90,7 +63,8 @@ public class TrackRowController {
     return trackNameController.getUri();
   }
 
-  private void setTrackUri(String trackUri) {
+  public void setTrackUri(String trackUri) {
+    playButtonController.setSpotifyUri(trackUri);
     trackNameController.setUri(trackUri);
   }
 
@@ -98,7 +72,7 @@ public class TrackRowController {
     return albumNameController.getUri();
   }
 
-  private void setAlbumUri(String albumUri) {
+  public void setAlbumUri(String albumUri) {
     albumNameController.setUri(albumUri);
   }
 }

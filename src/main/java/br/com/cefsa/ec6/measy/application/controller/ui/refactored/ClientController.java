@@ -3,15 +3,11 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 import br.com.cefsa.ec6.measy.application.factory.AlbumComponentFactory;
 import br.com.cefsa.ec6.measy.application.factory.ArtistComponentFactory;
 import br.com.cefsa.ec6.measy.application.factory.PlaylistComponentFactory;
-import br.com.cefsa.ec6.measy.domain.repository.spotify.AlbumRepository;
-import br.com.cefsa.ec6.measy.domain.repository.spotify.ArtistRepository;
-import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import br.com.cefsa.ec6.measy.infrastructure.util.SpotifyUriHelper;
 import com.wrapper.spotify.model_objects.specification.Album;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -19,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import java.io.IOException;
 
 @Controller
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)

@@ -1,17 +1,22 @@
 package br.com.cefsa.ec6.measy.infrastructure.factory;
 
-import br.com.cefsa.ec6.measy.App;
 import br.com.cefsa.ec6.measy.infrastructure.builder.FXMLLoaderBuilder;
+import br.com.cefsa.ec6.measy.infrastructure.util.ResourceFinder;
 import javafx.fxml.FXMLLoader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FXMLLoaderFactory implements Factory<FXMLLoader> {
 
-  public static FXMLLoader create(String componentName) {
-    return new FXMLLoaderBuilder()
+  @Autowired private ApplicationContext appContext;
+
+  public FXMLLoader create(String componentName) {
+    return appContext.getBean(FXMLLoaderBuilder.class)
         .springManaged()
-        .withUrl(App.class.getResource("/fxml/" + componentName + ".fxml"))
+        .withUrl(ResourceFinder.fxml(componentName))
         .build();
   }
+
 }

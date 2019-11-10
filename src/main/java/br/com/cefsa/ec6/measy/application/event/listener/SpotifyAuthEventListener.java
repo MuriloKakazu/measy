@@ -46,15 +46,15 @@ public class SpotifyAuthEventListener implements EventListener {
 //
 //            playlistController.setPlaylist(spotifyClient.getPlaylist("0PW1vmagj613BHpxEAvlFI"));
 
-            FXMLLoader albumLoader = FXMLLoaderFactory.create("Album");
-            Node album = albumLoader.load();
-            AlbumController albumController = albumLoader.getController();
-
-            albumController.setAlbum(spotifyClient.getAlbum("011iiGYooEuNN0c4770O6q"));
-
-            Node nodeToSet = album;
-
-            clientController.setContent((AnchorPane) nodeToSet);
+//            FXMLLoader albumLoader = FXMLLoaderFactory.create("Album");
+//            Node album = albumLoader.load();
+//            AlbumController albumController = albumLoader.getController();
+//
+//            albumController.setAlbum(spotifyClient.getAlbum("011iiGYooEuNN0c4770O6q"));
+//
+//            Node nodeToSet = album;
+//
+//            clientController.setContent((AnchorPane) nodeToSet);
 
             sidePanelController.fetchPlaylists();
 
