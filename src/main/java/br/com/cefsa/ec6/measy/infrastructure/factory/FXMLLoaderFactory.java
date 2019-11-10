@@ -13,10 +13,10 @@ public class FXMLLoaderFactory implements Factory<FXMLLoader> {
   @Autowired private ApplicationContext appContext;
 
   public FXMLLoader create(String componentName) {
-    return appContext.getBean(FXMLLoaderBuilder.class)
+    return appContext
+        .getBean(FXMLLoaderBuilder.class)
         .springManaged()
         .withUrl(ResourceFinder.fxml(componentName))
         .build();
   }
-
 }

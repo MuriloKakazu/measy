@@ -12,14 +12,13 @@ import org.springframework.stereotype.Controller;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class HyperlinkController {
 
-  @Autowired
-  private ClientController clientController;
+  @Autowired private ClientController clientController;
 
-  @FXML
-  private Label label;
+  @FXML private Label label;
   private String uri;
 
-  @FXML private void onMouseClick(MouseEvent event) {
+  @FXML
+  private void onMouseClick(MouseEvent event) {
     clientController.navigateToUri(getUri());
   }
 
@@ -38,5 +37,4 @@ public class HyperlinkController {
   public void setUri(String uri) {
     this.uri = uri;
   }
-
 }

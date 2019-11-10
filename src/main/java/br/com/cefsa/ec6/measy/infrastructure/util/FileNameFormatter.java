@@ -5,5 +5,4 @@ public class FileNameFormatter {
   public static String withoutExtension(String fileName) {
     return fileName.replaceAll("\\..+", "");
   }
-
 }

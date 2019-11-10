@@ -3,8 +3,6 @@ package br.com.cefsa.ec6.measy.infrastructure.util;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.Track;
 import javax.validation.constraints.NotNull;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SpotifyUriHelper {
 

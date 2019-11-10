@@ -4,23 +4,19 @@ import br.com.cefsa.ec6.measy.application.controller.ui.refactored.PlaylistContr
 import br.com.cefsa.ec6.measy.domain.repository.spotify.PlaylistRepository;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import com.wrapper.spotify.model_objects.specification.Playlist;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class PlaylistComponentFactory {
 
-  @Autowired
-  private PlaylistRepository playlistRepository;
+  @Autowired private PlaylistRepository playlistRepository;
 
-  @Autowired
-  private FXMLLoaderFactory fxmlLoaderFactory;
+  @Autowired private FXMLLoaderFactory fxmlLoaderFactory;
 
   public Node fromPlaylistId(@NotNull String playlistId) {
     return fromPlaylist(playlistRepository.getById(playlistId));
@@ -40,5 +36,4 @@ public class PlaylistComponentFactory {
       throw new RuntimeException(e);
     }
   }
-
 }

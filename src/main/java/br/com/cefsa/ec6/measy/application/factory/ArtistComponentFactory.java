@@ -4,23 +4,19 @@ import br.com.cefsa.ec6.measy.application.controller.ui.refactored.ArtistControl
 import br.com.cefsa.ec6.measy.domain.repository.spotify.ArtistRepository;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import com.wrapper.spotify.model_objects.specification.Artist;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class ArtistComponentFactory {
 
-  @Autowired
-  private ArtistRepository artistRepository;
+  @Autowired private ArtistRepository artistRepository;
 
-  @Autowired
-  private FXMLLoaderFactory fxmlLoaderFactory;
+  @Autowired private FXMLLoaderFactory fxmlLoaderFactory;
 
   public Node fromArtistId(@NotNull String artistId) {
     return fromArtist(artistRepository.getById(artistId));
@@ -40,5 +36,4 @@ public class ArtistComponentFactory {
       throw new RuntimeException(e);
     }
   }
-
 }

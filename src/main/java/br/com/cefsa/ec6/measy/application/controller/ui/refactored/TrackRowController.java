@@ -3,15 +3,10 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 import br.com.cefsa.ec6.measy.application.factory.HyperlinkFactory;
 import br.com.cefsa.ec6.measy.infrastructure.util.formatter.MillisTimeFormatter;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
-import com.wrapper.spotify.model_objects.specification.Track;
-import com.wrapper.spotify.model_objects.specification.TrackSimplified;
-import java.util.Arrays;
 import java.util.Collection;
-
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -22,10 +17,8 @@ import org.springframework.stereotype.Controller;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TrackRowController {
 
-  @Autowired
-  private ClientController clientController;
-  @Autowired
-  private HyperlinkFactory hyperlinkFactory;
+  @Autowired private ClientController clientController;
+  @Autowired private HyperlinkFactory hyperlinkFactory;
 
   @FXML private Label duration;
   @FXML private HBox artistsContainer;

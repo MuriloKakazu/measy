@@ -5,24 +5,26 @@ import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class TrackRowFactory {
 
-  @Autowired
-  private FXMLLoaderFactory fxmlLoaderFactory;
+  @Autowired private FXMLLoaderFactory fxmlLoaderFactory;
 
-  private Node create(String trackName, String trackUri, String albumName, String albumUri,
-                      Collection<ArtistSimplified> artists, Integer durationMs) {
+  private Node create(
+      String trackName,
+      String trackUri,
+      String albumName,
+      String albumUri,
+      Collection<ArtistSimplified> artists,
+      Integer durationMs) {
 
     try {
 
@@ -42,7 +44,6 @@ public class TrackRowFactory {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-
   }
 
   public Node create(Track track) {
@@ -52,8 +53,7 @@ public class TrackRowFactory {
         track.getAlbum().getName(),
         track.getAlbum().getUri(),
         Arrays.asList(track.getArtists()),
-        track.getDurationMs()
-    );
+        track.getDurationMs());
   }
 
   public Node create(TrackSimplified track) {
@@ -63,8 +63,6 @@ public class TrackRowFactory {
         "",
         "",
         Arrays.asList(track.getArtists()),
-        track.getDurationMs()
-    );
+        track.getDurationMs());
   }
-
 }

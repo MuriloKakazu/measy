@@ -1,7 +1,7 @@
 package br.com.cefsa.ec6.measy;
 
 import br.com.cefsa.ec6.measy.infrastructure.builder.FXMLLoaderBuilder;
-import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
+import java.util.Arrays;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,8 +14,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
 
 @SpringBootApplication
 public class App extends Application {
@@ -32,11 +30,11 @@ public class App extends Application {
 
     APP_CONTEXT = SpringApplication.run(App.class);
 
-    FXML_LOADER = new FXMLLoaderBuilder()
-        .springManaged(APP_CONTEXT)
-        .withUrl(App.class.getResource("/fxml/Client.fxml"))
-        .build();
-
+    FXML_LOADER =
+        new FXMLLoaderBuilder()
+            .springManaged(APP_CONTEXT)
+            .withUrl(App.class.getResource("/fxml/Client.fxml"))
+            .build();
   }
 
   @Override

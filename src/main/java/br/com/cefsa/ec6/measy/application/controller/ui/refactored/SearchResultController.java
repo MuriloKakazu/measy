@@ -2,6 +2,7 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
 import br.com.cefsa.ec6.measy.application.factory.RecordCardFactory;
 import com.wrapper.spotify.model_objects.specification.*;
+import java.util.Collection;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
@@ -10,25 +11,19 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.util.Collection;
-
 @Controller
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SearchResultController {
 
   @Autowired private RecordCardFactory recordCardFactory;
 
-  @FXML
-  private FlowPane tracksPanel;
+  @FXML private FlowPane tracksPanel;
 
-  @FXML
-  private FlowPane artistsPanel;
+  @FXML private FlowPane artistsPanel;
 
-  @FXML
-  private FlowPane albumsPanel;
+  @FXML private FlowPane albumsPanel;
 
-  @FXML
-  private FlowPane playlistsPanel;
+  @FXML private FlowPane playlistsPanel;
 
   public void addTracks(Collection<Track> tracks) {
     for (Track track : tracks) addTrack(track);
@@ -65,5 +60,4 @@ public class SearchResultController {
     Node playlistCard = recordCardFactory.fromPlaylist(playlist);
     playlistsPanel.getChildren().add(playlistCard);
   }
-
 }

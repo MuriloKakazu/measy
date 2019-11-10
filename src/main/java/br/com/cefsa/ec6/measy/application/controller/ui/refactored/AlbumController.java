@@ -23,7 +23,8 @@ public class AlbumController {
         "By "
             .concat(
                 ArtistFormatter.formatSimplifiedArtistsNames(Arrays.asList(album.getArtists()))));
-    headerController.setImage(ImagePicker.pickHighestResolutionImage(Arrays.asList(album.getImages())).getUrl());
+    headerController.setImage(
+        ImagePicker.pickHighestResolutionImage(Arrays.asList(album.getImages())).getUrl());
     headerController.setContextUri(album.getUri());
 
     Arrays.stream(album.getTracks().getItems()).forEach(track -> tracksController.addTrack(track));

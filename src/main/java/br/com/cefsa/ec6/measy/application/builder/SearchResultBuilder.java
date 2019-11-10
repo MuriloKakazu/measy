@@ -4,6 +4,10 @@ import br.com.cefsa.ec6.measy.application.controller.ui.refactored.SearchResultC
 import br.com.cefsa.ec6.measy.infrastructure.builder.Builder;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import com.wrapper.spotify.model_objects.specification.*;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +15,11 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.stream.Stream;
-
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SearchResultBuilder implements Builder<Node> {
 
-  @Autowired
-  private FXMLLoaderFactory fxmlLoaderFactory;
+  @Autowired private FXMLLoaderFactory fxmlLoaderFactory;
 
   private Collection<Track> tracks;
   private Collection<Artist> artists;

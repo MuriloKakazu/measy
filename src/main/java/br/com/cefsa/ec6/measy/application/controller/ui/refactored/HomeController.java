@@ -2,16 +2,10 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
 import br.com.cefsa.ec6.measy.application.factory.RecordCardFactory;
 import br.com.cefsa.ec6.measy.domain.repository.spotify.TrackRepository;
-import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
-import br.com.cefsa.ec6.measy.infrastructure.util.ImagePicker;
-import br.com.cefsa.ec6.measy.infrastructure.util.formatter.TrackFormatter;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
-import java.util.Arrays;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.layout.FlowPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
