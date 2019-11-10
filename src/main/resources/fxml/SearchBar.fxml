@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,19 +9,18 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.SearchBarController">
 
-    <CustomTextField maxWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <left>
-        <Label styleClass="searchBoxLabel">
-            <graphic>
-                <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/search_black.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Label>
-    </left>
-</CustomTextField>
-
+    <CustomTextField fx:id="searchField" maxWidth="400.0" onAction="#onAction" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <left>
+            <Label styleClass="searchBoxLabel">
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../icons/search_black.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Label>
+        </left>
+    </CustomTextField>
 
 </AnchorPane>

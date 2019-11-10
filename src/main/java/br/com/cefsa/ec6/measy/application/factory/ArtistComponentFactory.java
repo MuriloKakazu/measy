@@ -3,7 +3,6 @@ package br.com.cefsa.ec6.measy.application.factory;
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.ArtistController;
 import br.com.cefsa.ec6.measy.domain.repository.spotify.ArtistRepository;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
-import br.com.cefsa.ec6.measy.infrastructure.holder.FXMLLoaderHolder;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

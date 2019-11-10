@@ -2,13 +2,9 @@ package br.com.cefsa.ec6.measy.application.factory;
 
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.RecordCardController;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
-import br.com.cefsa.ec6.measy.infrastructure.holder.FXMLLoaderHolder;
 import br.com.cefsa.ec6.measy.infrastructure.util.ImagePicker;
 import br.com.cefsa.ec6.measy.infrastructure.util.formatter.TrackFormatter;
-import com.wrapper.spotify.model_objects.specification.Album;
-import com.wrapper.spotify.model_objects.specification.Artist;
-import com.wrapper.spotify.model_objects.specification.Playlist;
-import com.wrapper.spotify.model_objects.specification.Track;
+import com.wrapper.spotify.model_objects.specification.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +62,22 @@ public class RecordCardFactory {
   }
 
   public Node fromPlaylist(Playlist playlist) {
+    return create(
+        playlist.getUri(),
+        playlist.getName(),
+        ImagePicker.pickHighestResolutionImage(playlist.getImages()).getUrl()
+    );
+  }
+
+  public Node fromAlbum(AlbumSimplified album) {
+    return create(
+        album.getUri(),
+        album.getName(),
+        ImagePicker.pickHighestResolutionImage(album.getImages()).getUrl()
+    );
+  }
+
+  public Node fromPlaylist(PlaylistSimplified playlist) {
     return create(
         playlist.getUri(),
         playlist.getName(),

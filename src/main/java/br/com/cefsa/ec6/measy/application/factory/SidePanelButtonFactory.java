@@ -3,7 +3,6 @@ package br.com.cefsa.ec6.measy.application.factory;
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.SidePanelButtonController;
 import br.com.cefsa.ec6.measy.application.enums.Icon;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
-import br.com.cefsa.ec6.measy.infrastructure.holder.FXMLLoaderHolder;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import javafx.fxml.FXMLLoader;

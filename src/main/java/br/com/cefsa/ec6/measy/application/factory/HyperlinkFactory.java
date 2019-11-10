@@ -2,7 +2,6 @@ package br.com.cefsa.ec6.measy.application.factory;
 
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.HyperlinkController;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
-import br.com.cefsa.ec6.measy.infrastructure.holder.FXMLLoaderHolder;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import org.springframework.beans.factory.annotation.Autowired;
