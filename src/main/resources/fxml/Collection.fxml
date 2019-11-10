@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-medium" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.CollectionController">
   <children>
-      <ScrollPane fitToWidth="true" stylesheets="@../styles/measy/scroll-panel-transparent.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fitToWidth="true" pannable="true" stylesheets="@../styles/measy/scroll-panel-transparent.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0">
             <children>

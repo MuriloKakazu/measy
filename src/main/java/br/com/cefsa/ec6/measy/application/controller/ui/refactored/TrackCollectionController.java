@@ -1,12 +1,11 @@
 package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
-import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
+import br.com.cefsa.ec6.measy.application.factory.TrackRowFactory;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
-import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Node;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -15,34 +14,17 @@ import org.springframework.stereotype.Controller;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TrackCollectionController {
 
+  @Autowired private TrackRowFactory trackRowFactory;
+
   @FXML private CollectionController tracksController;
 
   public void addTrack(Track track) {
-    final FXMLLoader trackRowLoader = appendTrack();
-    final TrackRowController trackRowController = trackRowLoader.getController();
-
-    trackRowController.setTrack(track);
+    final Node trackRow = trackRowFactory.create(track);
+    tracksController.addChild(trackRow);
   }
 
   public void addTrack(TrackSimplified track) {
-    final FXMLLoader trackRowLoader = appendTrack();
-    final TrackRowController trackRowController = trackRowLoader.getController();
-
-    trackRowController.setTrack(track);
-  }
-
-  private FXMLLoader appendTrack() {
-    try {
-
-      final FXMLLoader trackRowLoader = FXMLLoaderFactory.create("TrackRow");
-
-      final Parent trackRowNode = trackRowLoader.load();
-      tracksController.addChild(trackRowNode);
-
-      return trackRowLoader;
-
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    final Node trackRow = trackRowFactory.create(track);
+    tracksController.addChild(trackRow);
   }
 }

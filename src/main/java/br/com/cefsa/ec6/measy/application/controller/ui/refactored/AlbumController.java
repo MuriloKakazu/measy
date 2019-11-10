@@ -1,5 +1,6 @@
 package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
+import br.com.cefsa.ec6.measy.infrastructure.util.ImagePicker;
 import br.com.cefsa.ec6.measy.infrastructure.util.formatter.ArtistFormatter;
 import com.wrapper.spotify.model_objects.specification.Album;
 import java.util.Arrays;
@@ -22,7 +23,8 @@ public class AlbumController {
         "By "
             .concat(
                 ArtistFormatter.formatSimplifiedArtistsNames(Arrays.asList(album.getArtists()))));
-    headerController.setImage(Arrays.stream(album.getImages()).findFirst().get().getUrl());
+    headerController.setImage(
+        ImagePicker.pickHighestResolutionImage(Arrays.asList(album.getImages())).getUrl());
     headerController.setContextUri(album.getUri());
 
     Arrays.stream(album.getTracks().getItems()).forEach(track -> tracksController.addTrack(track));

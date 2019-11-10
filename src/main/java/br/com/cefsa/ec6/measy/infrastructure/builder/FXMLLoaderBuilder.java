@@ -1,12 +1,13 @@
 package br.com.cefsa.ec6.measy.infrastructure.builder;
 
-import br.com.cefsa.ec6.measy.infrastructure.configuration.FXMLScannerConfiguration;
-import br.com.cefsa.ec6.measy.infrastructure.util.SpringContextLocator;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javafx.fxml.FXMLLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -14,13 +15,9 @@ import org.springframework.stereotype.Component;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class FXMLLoaderBuilder implements Builder<FXMLLoader> {
 
-  private FXMLLoader fxmlLoader = new FXMLLoader();
-  private String fxmlBasePath = new FXMLScannerConfiguration().fxmlBasePath();
+  @Autowired private ApplicationContext appContext;
 
-  public FXMLLoaderBuilder withFileName(String fileName) {
-    final String filePath = fxmlBasePath.concat(fileName);
-    return withFilePath(filePath);
-  }
+  private FXMLLoader fxmlLoader = new FXMLLoader();
 
   public FXMLLoaderBuilder withFilePath(String filePath) {
     try {
@@ -39,7 +36,11 @@ public class FXMLLoaderBuilder implements Builder<FXMLLoader> {
   }
 
   public FXMLLoaderBuilder springManaged() {
-    fxmlLoader.setControllerFactory(SpringContextLocator.getApplicationContext()::getBean);
+    return springManaged((ConfigurableApplicationContext) appContext);
+  }
+
+  public FXMLLoaderBuilder springManaged(ConfigurableApplicationContext appContext) {
+    fxmlLoader.setControllerFactory(appContext::getBean);
     return this;
   }
 

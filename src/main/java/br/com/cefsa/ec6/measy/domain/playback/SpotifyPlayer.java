@@ -1,6 +1,6 @@
 package br.com.cefsa.ec6.measy.domain.playback;
 
-import static br.com.cefsa.ec6.measy.infrastructure.util.SpotifyResourceTypeIdentifier.isTrackUri;
+import static br.com.cefsa.ec6.measy.infrastructure.util.SpotifyUriHelper.isTrackUri;
 
 import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
 import br.com.cefsa.ec6.measy.infrastructure.definitions.spotify.LoopMode;
