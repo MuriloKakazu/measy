@@ -18,8 +18,9 @@ public class LyricsRepository {
       Track track = musixmatchClient.getTrack(trackName, tackArtistName);
       return musixmatchClient.getLyrics(track.getTrack().getTrackId());
 
-    } catch (MusixMatchException e) {
-      throw new RuntimeException(e);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
     }
   }
 }

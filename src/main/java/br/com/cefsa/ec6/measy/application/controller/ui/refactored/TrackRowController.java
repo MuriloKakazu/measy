@@ -24,20 +24,15 @@ public class TrackRowController {
   @FXML private HBox artistsContainer;
   @FXML private HyperlinkController trackNameController;
   @FXML private HyperlinkController albumNameController;
+  @FXML private MultipleArtistsController artistsController;
   @FXML private SpotifyPlayButtonController playButtonController;
 
   public void setArtists(Collection<ArtistSimplified> artists) {
-    artistsContainer.getChildren().clear();
+    artistsController.clear();
 
     for (ArtistSimplified artist : artists) {
-      Node artistNode = hyperlinkFactory.create(artist.getName(), artist.getUri());
-      artistsContainer.getChildren().add(artistNode);
-
-      Node separator = hyperlinkFactory.create(", ", "");
-      artistsContainer.getChildren().add(separator);
+      artistsController.addArtist(artist);
     }
-
-    artistsContainer.getChildren().remove(artistsContainer.getChildren().size() - 1);
   }
 
   public void setTitle(String title) {

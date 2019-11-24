@@ -1,0 +1,44 @@
+package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
+
+import br.com.cefsa.ec6.measy.domain.model.youtube.Video;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import javax.validation.constraints.NotNull;
+
+@Controller
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class TrackHeaderController {
+
+    @FXML private Label title;
+    @FXML private Label subtitle;
+    @FXML private ImageView image;
+    @FXML private SpotifyPlayButtonController playButtonController;
+    @FXML private YoutubeEmbeddedVideoController embeddedVideoController;
+
+    public void setImage(@NotNull String imageUrl) {
+      this.image.setImage(new Image(imageUrl));
+    }
+
+    public void setTitle(@NotNull String title) {
+      this.title.setText(title);
+    }
+
+    public void setSubtitle(@NotNull String subtitle) {
+      this.subtitle.setText(subtitle);
+    }
+
+    public void setContextUri(@NotNull String contextUri) {
+      this.playButtonController.setSpotifyUri(contextUri);
+    }
+
+    public void loadVideo(@NotNull Video video) {
+      embeddedVideoController.load(video.getUrl());
+    }
+
+}

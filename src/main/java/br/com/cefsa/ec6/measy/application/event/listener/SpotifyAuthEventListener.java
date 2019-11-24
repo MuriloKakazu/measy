@@ -2,13 +2,31 @@ package br.com.cefsa.ec6.measy.application.event.listener;
 
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.*;
 import br.com.cefsa.ec6.measy.application.event.SpotifyAuthEvent;
+import br.com.cefsa.ec6.measy.domain.model.youtube.Video;
+import br.com.cefsa.ec6.measy.domain.repository.musixmatch.LyricsRepository;
+import br.com.cefsa.ec6.measy.domain.repository.youtube.VideoRepository;
 import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
+import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
 import br.com.cefsa.ec6.measy.infrastructure.util.FXThreadHelper;
 import com.google.common.eventbus.Subscribe;
 import java.io.IOException;
 import java.util.EventListener;
+
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import com.teamdev.jxbrowser.view.javafx.BrowserView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import org.jmusixmatch.entity.lyrics.Lyrics;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 @Component
 public class SpotifyAuthEventListener implements EventListener {
@@ -19,42 +37,22 @@ public class SpotifyAuthEventListener implements EventListener {
 
   @Autowired private SpotifyClient spotifyClient;
 
+  @Autowired private LyricsRepository lyricsRepository;
+
+  @Autowired private VideoRepository videoRepository;
+
+  @Autowired private FXMLLoaderFactory fxmlLoaderFactory;
+
   @Subscribe
   private void onSpotifyAuth(SpotifyAuthEvent event) throws IOException {
-    FXThreadHelper.run(
-        () -> {
-          try {
+    FXThreadHelper.run(() -> {
+      try {
 
-            //            FXMLLoader homeLoader = FXMLLoaderFactory.create("Home");
-            //            Node homeNode = homeLoader.load();
-            //            HomeController homeController = homeLoader.getController();
-            //            Collection<Track> tracks =
-            // Arrays.asList(spotifyClient.getUserTopTracks().getItems());
-            //            tracks.forEach(track -> homeController.addFavoriteTrack(track));
+        sidePanelController.fetchPlaylists();
 
-            //            FXMLLoader playlistLoader = FXMLLoaderFactory.create("Playlist");
-            //            Node playlist = playlistLoader.load();
-            //            PlaylistController playlistController = playlistLoader.getController();
-            //
-            //
-            // playlistController.setPlaylist(spotifyClient.getPlaylist("0PW1vmagj613BHpxEAvlFI"));
-
-            //            FXMLLoader albumLoader = FXMLLoaderFactory.create("Album");
-            //            Node album = albumLoader.load();
-            //            AlbumController albumController = albumLoader.getController();
-            //
-            //
-            // albumController.setAlbum(spotifyClient.getAlbum("011iiGYooEuNN0c4770O6q"));
-            //
-            //            Node nodeToSet = album;
-            //
-            //            clientController.setContent((AnchorPane) nodeToSet);
-
-            sidePanelController.fetchPlaylists();
-
-          } catch (Exception e) {
-            throw new RuntimeException(e);
-          }
-        });
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    });
   }
 }

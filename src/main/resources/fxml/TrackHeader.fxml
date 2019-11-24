@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="-1.0" prefWidth="912.0" styleClass="panel-dark-low" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.TrackHeaderController">
+  <children>
+    <VBox prefHeight="-1.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <GridPane alignment="TOP_LEFT" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="panel-dark-full" VBox.vgrow="NEVER">
+          <children>
+            <ImageView fx:id="image" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+              <image>
+                <Image backgroundLoading="false" url="@../sample/artist_0.jpg" />
+              </image>
+              <GridPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+              </GridPane.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+            </ImageView>
+            <GridPane prefHeight="-1.0" prefWidth="207.0" vgap="5.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+              <children>
+                <fx:include id="spotifyButton" fx:id="playButton" maxHeight="25.0" maxWidth="82.0" source="SpotifyPlayButton.fxml" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <GridPane.margin>
+                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" fx:id="x1" />
+                  </GridPane.margin>
+                </fx:include>
+                <Label fx:id="title" stylesheets="@../styles/measy/label.css" text="Title" textFill="WHITE" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                  <font>
+                    <Font size="32.0" />
+                  </font>
+                  <GridPane.margin>
+                    <Insets bottom="5.0" left="2.0" right="2.0" top="5.0" />
+                  </GridPane.margin>
+                </Label>
+                <Label fx:id="recordType" stylesheets="@../styles/measy/label.css" text="TRACK" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <font>
+                    <Font size="14.0" />
+                  </font>
+                           <GridPane.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" fx:id="x4" />
+                           </GridPane.margin>
+                </Label>
+                <Label fx:id="subtitle" stylesheets="@../styles/measy/label.css" text="Subtitle" textFill="WHITE" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                  <font>
+                    <Font size="16.0" />
+                  </font>
+                  <GridPane.margin>
+                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" fx:id="x1" />
+                  </GridPane.margin>
+                </Label>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="-1.0" />
+              </columnConstraints>
+              <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x3" />
+              </padding>
+              <rowConstraints>
+                <RowConstraints fillHeight="true" maxHeight="-1.0" minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-1.0" minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-1.0" minHeight="10.0" prefHeight="-1.0" valignment="CENTER" vgrow="ALWAYS" />
+              </rowConstraints>
+              <GridPane.margin>
+                <Insets bottom="10.0" top="10.0" />
+              </GridPane.margin>
+            </GridPane>
+            <fx:include fx:id="embeddedVideo" source="YoutubeEmbeddedVideo.fxml" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="-1.0" minWidth="-Infinity" prefWidth="-1.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="500.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="-Infinity" prefHeight="-1.0" vgrow="NEVER" />
+          </rowConstraints>
+          <stylesheets>
+            <URL value="@../styles/measy/panel-dark-full.css" />
+          </stylesheets>
+        </GridPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/measy/panel-dark-low.css" />
+  </stylesheets>
+</AnchorPane>

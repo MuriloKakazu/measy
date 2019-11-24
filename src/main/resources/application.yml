@@ -21,4 +21,16 @@ musixmatch:
     key: ${MUSIXMATCH_API_KEY}
   client:
     settings:
-      default-page-size: 20
+      default-page-size: 1
+
+youtube:
+  api:
+    key: ${YOUTUBE_API_KEY}
+  client:
+    settings:
+      default-page-size: 1
+      embedded-url: "https://www.youtube.com/embed/"
+
+jx-browser:
+  auth:
+    license-key: ${JX_BROWSER_LICENSE_KEY}

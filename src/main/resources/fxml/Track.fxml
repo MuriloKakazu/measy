@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane styleClass="panel-dark-full" stylesheets="@../styles/measy/panel-dark-full.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.TrackController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <fx:include fx:id="header" source="TrackHeader.fxml" />
+            <ScrollPane fitToWidth="true" stylesheets="@../styles/measy/scroll-panel-transparent.css">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <GridPane alignment="TOP_CENTER" styleClass="panel-dark-medium" stylesheets="@../styles/measy/panel-dark-medium.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="lyricsLabel" alignment="CENTER" contentDisplay="CENTER" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. &#10;Nullam dignissim pretium ipsum vel porta. &#10;Nullam nec tincidunt leo, at dapibus ipsum. &#10;Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. &#10;Cras mattis odio laoreet accumsan eleifend. &#10;Praesent egestas purus sed lorem accumsan, id sagittis nibh tincidunt. &#10;Etiam faucibus volutpat metus eu ornare. &#10;Suspendisse potenti. &#10;Curabitur pretium in enim at blandit.&#10;&#10;Etiam urna orci, suscipit a condimentum id, ullamcorper nec diam. &#10;Proin viverra nunc sit amet sapien pellentesque, eu iaculis metus rutrum. &#10;Nullam vel justo facilisis, blandit nisi nec, tincidunt ante. &#10;Duis dui ex, varius quis scelerisque sit amet, facilisis sed magna. &#10;Phasellus ac elementum purus. &#10;Sed commodo egestas sapien, eu ornare purus. &#10;Donec tortor magna, fermentum eget varius id, dictum eget nisi. &#10;Pellentesque sapien metus, pharetra ut rutrum eget, posuere a ex. &#10;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. &#10;Interdum et malesuada fames ac ante ipsum primis in faucibus. &#10;In hac habitasse platea dictumst. &#10;Vestibulum eget rutrum quam. &#10;Nullam ut nunc consectetur, eleifend ipsum vitae, pulvinar lorem. &#10;Maecenas ut dictum nunc. &#10;Cras quis convallis orci. &#10;Praesent leo massa, consectetur non diam eu, auctor consectetur tortor." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding></Label>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
