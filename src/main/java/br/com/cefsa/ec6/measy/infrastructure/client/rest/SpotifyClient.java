@@ -22,6 +22,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 @Component
 public class SpotifyClient {
 
@@ -206,5 +209,9 @@ public class SpotifyClient {
 
   public CurrentlyPlayingContext getPlaybackInfo() {
     return request(spotifyApi.getInformationAboutUsersCurrentPlayback().build());
+  }
+
+  public void addTrackToPlaylist(@NotNull String playlistId, @NotNull String trackUri) {
+    request(spotifyApi.addTracksToPlaylist(playlistId, new JsonArrayBuilder().with(trackUri).build()).build());
   }
 }

@@ -20,6 +20,7 @@ public class App extends Application {
 
   private static FXMLLoader FXML_LOADER;
   private static ConfigurableApplicationContext APP_CONTEXT;
+  private static Stage PRIMARY_STAGE;
 
   public static void main(String[] args) {
     launch(args);
@@ -40,6 +41,8 @@ public class App extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     try {
+
+      PRIMARY_STAGE = stage;
 
       final Parent client = FXML_LOADER.load();
       final Scene scene = new Scene(client, 1280, 720, false, SceneAntialiasing.BALANCED);
@@ -62,6 +65,10 @@ public class App extends Application {
   public void stop() {
     APP_CONTEXT.stop();
     System.exit(0);
+  }
+
+  public static Stage getPrimaryStage() {
+    return PRIMARY_STAGE;
   }
 
   @Bean

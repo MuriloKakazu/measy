@@ -19,10 +19,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class YouTubeConfiguration {
 
-  @Autowired private Engine browserEngine;
-  @Autowired private Browser browser;
-  @Autowired private BrowserView browserView;
-
   @Bean public YouTube youtubeApi() {
 
     final HttpTransport httpTransport = new NetHttpTransport();
@@ -41,11 +37,11 @@ public class YouTubeConfiguration {
             .build());
   }
 
-  @Bean public Browser browser() {
+  @Bean public Browser browser(@Autowired Engine browserEngine) {
     return browserEngine.newBrowser();
   }
 
-  @Bean public BrowserView browserView() {
+  @Bean public BrowserView browserView(@Autowired Browser browser) {
     return BrowserView.newInstance(browser);
   }
 

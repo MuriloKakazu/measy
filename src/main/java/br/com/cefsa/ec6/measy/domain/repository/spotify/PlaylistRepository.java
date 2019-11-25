@@ -25,4 +25,8 @@ public class PlaylistRepository implements SpotifyRepository<Playlist> {
   public Paging<PlaylistSimplified> getCurrentUserPlaylists() {
     return spotifyClient.getUserSavedPlaylists();
   }
+
+  public void addTrackToPlaylist(@NotNull String playlistId, @NotNull String trackUri) {
+    spotifyClient.addTrackToPlaylist(playlistId, trackUri);
+  }
 }

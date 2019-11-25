@@ -2,8 +2,11 @@ package br.com.cefsa.ec6.measy.domain.playback;
 
 import static br.com.cefsa.ec6.measy.infrastructure.util.SpotifyUriHelper.isTrackUri;
 
+import br.com.cefsa.ec6.measy.application.controller.ui.refactored.PlayerPanelController;
 import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
 import br.com.cefsa.ec6.measy.infrastructure.definitions.spotify.LoopMode;
+import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
+import com.wrapper.spotify.model_objects.miscellaneous.Device;
 import com.wrapper.spotify.model_objects.specification.Album;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Playlist;
@@ -17,26 +20,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpotifyPlayer {
   @Autowired private SpotifyClient spotifyClient;
+  @Autowired private PlayerPanelController playerPanelController;
+
+  public CurrentlyPlayingContext getPlaybackInfo() {
+    return spotifyClient.getPlaybackInfo();
+  }
 
   public void play(@NotNull Artist artist) {
-    spotifyClient.playContext(artist.getUri());
+    playUri(artist.getUri());
   }
 
   public void play(@NotNull Album album) {
-    spotifyClient.playContext(album.getUri());
+    playUri(album.getUri());
   }
 
   public void play(@NotNull Playlist playlist) {
-    spotifyClient.playContext(playlist.getUri());
+    playUri(playlist.getUri());
   }
 
   public void play(@NotNull Track track) {
-    spotifyClient.playTrack(track.getUri());
+    playUri(track.getUri());
   }
 
   public void playUri(@NotNull String uri) {
     if (isTrackUri(uri)) spotifyClient.playTrack(uri);
     else spotifyClient.playContext(uri);
+    playerPanelController.refresh();
   }
 
   public void resume() {
@@ -65,5 +74,29 @@ public class SpotifyPlayer {
 
   public void setLoop(LoopMode loopMode) {
     spotifyClient.setLoop(loopMode);
+  }
+
+  public LoopMode getLoop() {
+    return LoopMode.getByKey(getPlaybackInfo().getRepeat_state());
+  }
+
+  public Boolean getShuffle() {
+    return getPlaybackInfo().getShuffle_state();
+  }
+
+  public Boolean isPlaying() {
+    return getPlaybackInfo().getIs_playing();
+  }
+
+  public Track getCurrentTrack() {
+    return getPlaybackInfo().getItem();
+  }
+
+  public Device getCurrentDevice() {
+    return getPlaybackInfo().getDevice();
+  }
+
+  public Boolean hasDevice() {
+    return getCurrentDevice() != null;
   }
 }

@@ -31,17 +31,13 @@ public class TrackController {
   public void setTrack(Track track) {
     final String trackName = track.getName();
     final String artistName = ArtistPicker.pickMain(track.getArtists()).getName();
-    final String trackCoverUrl = ImagePicker.pickHighestResolutionImage(track.getAlbum().getImages()).getUrl();
 
     final Lyrics lyrics = lyricsRepository.getLyricsFromTrack(trackName, artistName);
     final Video video = videoRepository.getVideo(trackName, artistName);
 
     lyricsLabel.setText(Optional.ofNullable(lyrics).orElse(new Lyrics()).getLyricsBody());
     headerController.loadVideo(video);
-    headerController.setImage(trackCoverUrl);
-    headerController.setTitle(trackName);
-    headerController.setContextUri(track.getUri());
-    headerController.setSubtitle("By ".concat(ArtistFormatter.formatSimplifiedArtistsNames(Arrays.asList(track.getArtists()))));
+    headerController.setTrack(track);
   }
 
 }

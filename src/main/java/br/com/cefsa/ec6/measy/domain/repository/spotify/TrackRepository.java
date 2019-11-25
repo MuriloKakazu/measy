@@ -46,4 +46,8 @@ public class TrackRepository extends CachedRepository<Track> implements SpotifyR
       @NotNull String artistId, @NotNull CountryCode countryCode) {
     return encache(Arrays.asList(spotifyClient.getArtistTopTracks(artistId, countryCode)));
   }
+
+  public Paging<Track> getMostPopularsFromCurrentUser() {
+    return encache(spotifyClient.getUserTopTracks());
+  }
 }
