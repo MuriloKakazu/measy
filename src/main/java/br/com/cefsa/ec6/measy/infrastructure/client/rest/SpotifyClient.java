@@ -22,9 +22,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 @Component
 public class SpotifyClient {
 
@@ -100,6 +97,10 @@ public class SpotifyClient {
 
   public Playlist getPlaylist(@NotNull String playlistId) {
     return request(spotifyApi.getPlaylist(playlistId).build());
+  }
+
+  public Paging<PlaylistTrack> getPlaylistTracks(@NotNull String playlistId) {
+    return request(spotifyApi.getPlaylistsTracks(playlistId).build());
   }
 
   public Artist getArtist(@NotNull String artistId) {

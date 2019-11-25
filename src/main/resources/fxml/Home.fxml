@@ -18,6 +18,15 @@
                <children>
                   <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
+                        <Label text="Global Charts" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <FlowPane fx:id="globalChartsTracks" alignment="CENTER" columnHalignment="CENTER" hgap="2.0" prefWrapLength="${self.parent.width}" vgap="2.0" />
                         <Label text="Your Favorites" textFill="WHITE">
                            <font>
                               <Font size="24.0" />

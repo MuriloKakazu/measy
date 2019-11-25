@@ -20,6 +20,7 @@ public class HomeController {
   @Autowired private RecordCardFactory recordCardFactory;
 
   @FXML private FlowPane userFavoriteTracks;
+  @FXML private FlowPane globalChartsTracks;
 
   public void addFavoriteTrack(Track track) {
     Node trackCard = recordCardFactory.fromTrack(track);
@@ -29,5 +30,10 @@ public class HomeController {
   public void addFavoriteTrack(TrackSimplified track) {
     Track fullTrack = trackRepository.getById(track.getId());
     addFavoriteTrack(fullTrack);
+  }
+
+  public void addGlobalChartsTrack(Track track) {
+    Node trackCard = recordCardFactory.fromTrack(track);
+    globalChartsTracks.getChildren().add(trackCard);
   }
 }

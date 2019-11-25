@@ -4,6 +4,7 @@ import br.com.cefsa.ec6.measy.application.controller.ui.refactored.ArtistControl
 import br.com.cefsa.ec6.measy.application.controller.ui.refactored.HomeController;
 import br.com.cefsa.ec6.measy.domain.repository.spotify.TrackRepository;
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
+import br.com.cefsa.ec6.measy.infrastructure.util.TrackPicker;
 import com.wrapper.spotify.model_objects.specification.Track;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,6 +28,10 @@ public class HomeComponentFactory {
 
       for (Track track : trackRepository.getMostPopularsFromCurrentUser().getItems()) {
         homeController.addFavoriteTrack(track);
+      }
+
+      for (Track track : TrackPicker.fromPlaylistTracks(trackRepository.getFromGlobalCharts())) {
+        homeController.addGlobalChartsTrack(track);
       }
 
       return homeNode;
