@@ -23,10 +23,10 @@ public class TestPurposeEventListener {
 
   @EventListener
   public void onRefresh(final ApplicationReadyEvent event) {
-    try {
-      spotifyClient.requestAuthToken();
-    } catch (NavigationException e) {
-      e.printStackTrace();
-    }
+//    try {
+//      spotifyClient.requestAuthToken();
+//    } catch (NavigationException e) {
+//      e.printStackTrace();
+//    }
   }
 }

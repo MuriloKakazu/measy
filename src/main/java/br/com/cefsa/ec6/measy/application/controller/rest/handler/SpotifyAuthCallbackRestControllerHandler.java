@@ -36,10 +36,7 @@ public class SpotifyAuthCallbackRestControllerHandler {
 
       spotifyClient.consumeAuthToken(code);
       eventBus.post(new SpotifyAuthEvent());
-
-      String message = String.format("Authentication successful!");
-      AlertUtil.showInfoAsync(message);
-      return message;
+      return "Authentication successful!";
 
     } catch (Exception e) {
       String message = String.format("An unexpected error has occurred: %s", e.getMessage());

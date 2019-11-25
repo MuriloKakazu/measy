@@ -34,7 +34,7 @@ public class App extends Application {
     FXML_LOADER =
         new FXMLLoaderBuilder()
             .springManaged(APP_CONTEXT)
-            .withUrl(App.class.getResource("/fxml/Client.fxml"))
+            .withUrl(App.class.getResource("/fxml/Auth.fxml"))
             .build();
   }
 
@@ -43,32 +43,27 @@ public class App extends Application {
     try {
 
       PRIMARY_STAGE = stage;
+      final Parent primaryNode = FXML_LOADER.load();
+      final Scene scene = new Scene(primaryNode, 983, 628, false, SceneAntialiasing.BALANCED);
 
-      final Parent client = FXML_LOADER.load();
-      final Scene scene = new Scene(client, 1280, 720, false, SceneAntialiasing.BALANCED);
+      setScene(scene);
 
       stage.setTitle("Measy");
-      stage.setScene(scene);
       stage.show();
 
     } catch (Exception e) {
-
-      System.out.println(e);
-      System.out.println(e.getMessage());
-      System.out.println(e.getCause());
-      System.out.println(e.getStackTrace());
       e.printStackTrace();
     }
+  }
+
+  public static void setScene(Scene scene) {
+    PRIMARY_STAGE.setScene(scene);
   }
 
   @Override
   public void stop() {
     APP_CONTEXT.stop();
     System.exit(0);
-  }
-
-  public static Stage getPrimaryStage() {
-    return PRIMARY_STAGE;
   }
 
   @Bean

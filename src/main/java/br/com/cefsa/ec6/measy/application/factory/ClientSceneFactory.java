@@ -1,0 +1,33 @@
+package br.com.cefsa.ec6.measy.application.factory;
+
+import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+
+@Component
+public class ClientSceneFactory {
+
+  @Autowired
+  private FXMLLoaderFactory fxmlLoaderFactory;
+
+  public Scene create() {
+    try {
+
+      final FXMLLoader loader = fxmlLoaderFactory.create("Client");
+      final Parent clientNode = loader.load();
+
+      return new Scene(clientNode, 1280, 720, false, SceneAntialiasing.BALANCED);
+
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+}
