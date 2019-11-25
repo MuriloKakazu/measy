@@ -15,8 +15,8 @@ public class HomeButtonController {
   @Autowired private HomeComponentFactory homeComponentFactory;
   @Autowired private ClientController clientController;
 
-  @FXML private void onMouseClicked(MouseEvent event) {
+  @FXML
+  private void onMouseClicked(MouseEvent event) {
     clientController.setContent(homeComponentFactory.create());
   }
-
 }

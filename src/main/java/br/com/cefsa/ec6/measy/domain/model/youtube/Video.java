@@ -52,5 +52,4 @@ public class Video {
   private void setThumbnailUrl(String thumbnailUrl) {
     this.thumbnailUrl = thumbnailUrl;
   }
-
 }

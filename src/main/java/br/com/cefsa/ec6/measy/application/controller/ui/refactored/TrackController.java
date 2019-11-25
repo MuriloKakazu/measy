@@ -4,9 +4,8 @@ import br.com.cefsa.ec6.measy.domain.model.youtube.Video;
 import br.com.cefsa.ec6.measy.domain.repository.musixmatch.LyricsRepository;
 import br.com.cefsa.ec6.measy.domain.repository.youtube.VideoRepository;
 import br.com.cefsa.ec6.measy.infrastructure.util.ArtistPicker;
-import br.com.cefsa.ec6.measy.infrastructure.util.ImagePicker;
-import br.com.cefsa.ec6.measy.infrastructure.util.formatter.ArtistFormatter;
 import com.wrapper.spotify.model_objects.specification.Track;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.jmusixmatch.entity.lyrics.Lyrics;
@@ -14,9 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import java.util.Arrays;
-import java.util.Optional;
 
 @Controller
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -39,5 +35,4 @@ public class TrackController {
     headerController.loadVideo(video);
     headerController.setTrack(track);
   }
-
 }

@@ -19,30 +19,31 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class YouTubeConfiguration {
 
-  @Bean public YouTube youtubeApi() {
+  @Bean
+  public YouTube youtubeApi() {
 
     final HttpTransport httpTransport = new NetHttpTransport();
     final JsonFactory jsonFactory = new JacksonFactory();
-    final HttpRequestInitializer httpRequestInitializer = initializer -> { };
+    final HttpRequestInitializer httpRequestInitializer = initializer -> {};
 
     return new YouTube.Builder(httpTransport, jsonFactory, httpRequestInitializer)
         .setApplicationName("measy")
         .build();
   }
 
-  @Bean public Engine browserEngine(@Value("${jx-browser.auth.license-key}") String jxLicenseKey) {
+  @Bean
+  public Engine browserEngine(@Value("${jx-browser.auth.license-key}") String jxLicenseKey) {
     return Engine.newInstance(
-        EngineOptions.newBuilder(RenderingMode.OFF_SCREEN)
-            .licenseKey(jxLicenseKey)
-            .build());
+        EngineOptions.newBuilder(RenderingMode.OFF_SCREEN).licenseKey(jxLicenseKey).build());
   }
 
-  @Bean public Browser browser(@Autowired Engine browserEngine) {
+  @Bean
+  public Browser browser(@Autowired Engine browserEngine) {
     return browserEngine.newBrowser();
   }
 
-  @Bean public BrowserView browserView(@Autowired Browser browser) {
+  @Bean
+  public BrowserView browserView(@Autowired Browser browser) {
     return BrowserView.newInstance(browser);
   }
-
 }

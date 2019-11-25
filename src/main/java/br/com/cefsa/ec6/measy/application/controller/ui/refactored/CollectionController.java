@@ -20,4 +20,8 @@ public class CollectionController {
   public void addChildren(Node... nodes) {
     items.getChildren().addAll(nodes);
   }
+
+  public void clear() {
+    items.getChildren().clear();
+  }
 }

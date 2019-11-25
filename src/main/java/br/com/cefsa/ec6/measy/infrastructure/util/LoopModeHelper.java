@@ -22,9 +22,9 @@ public class LoopModeHelper {
       case LOOP_CONTEXT:
       case LOOP_OFF:
         return Icon.REPEAT_WHITE;
-      case LOOP_TRACK: return Icon.REPEAT_ONE_WHITE;
+      case LOOP_TRACK:
+        return Icon.REPEAT_ONE_WHITE;
     }
     return Icon.REPEAT_WHITE;
   }
-
 }

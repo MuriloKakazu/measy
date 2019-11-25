@@ -1,6 +1,5 @@
 package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
-import br.com.cefsa.ec6.measy.App;
 import br.com.cefsa.ec6.measy.application.enums.Icon;
 import br.com.cefsa.ec6.measy.domain.playback.SpotifyPlayer;
 import br.com.cefsa.ec6.measy.infrastructure.definitions.spotify.LoopMode;
@@ -10,16 +9,11 @@ import br.com.cefsa.ec6.measy.infrastructure.util.LoopModeHelper;
 import br.com.cefsa.ec6.measy.infrastructure.util.formatter.TrackFormatter;
 import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -94,25 +88,26 @@ public class PlayerPanelController {
   public void refresh() {
     final CurrentlyPlayingContext playbackInfo = spotifyPlayer.getPlaybackInfo();
 
-    playPauseImage.setImage(new Image(iconURLFinder.findRelativePath(
-        playbackInfo.getIs_playing()
-          ? Icon.PAUSE_WHITE
-          : Icon.PLAY_ARROW_WHITE
-    )));
+    playPauseImage.setImage(
+        new Image(
+            iconURLFinder.findRelativePath(
+                playbackInfo.getIs_playing() ? Icon.PAUSE_WHITE : Icon.PLAY_ARROW_WHITE)));
 
-    trackImage.setImage(new Image(ImagePicker.pickHighestResolutionImage(
-        playbackInfo.getItem().getAlbum().getImages()).getUrl()));
+    trackImage.setImage(
+        new Image(
+            ImagePicker.pickHighestResolutionImage(playbackInfo.getItem().getAlbum().getImages())
+                .getUrl()));
 
-    loopImage.setImage(new Image(iconURLFinder.findRelativePath(
-        LoopModeHelper.getIcon(LoopMode.getByKey(playbackInfo.getRepeat_state())))));
+    loopImage.setImage(
+        new Image(
+            iconURLFinder.findRelativePath(
+                LoopModeHelper.getIcon(LoopMode.getByKey(playbackInfo.getRepeat_state())))));
 
-    shuffleImage.setImage(new Image(iconURLFinder.findRelativePath(
-        playbackInfo.getShuffle_state()
-          ? Icon.SHUFFLE_WHITE
-          : Icon.SHUFFLE_WHITE
-    )));
+    shuffleImage.setImage(
+        new Image(
+            iconURLFinder.findRelativePath(
+                playbackInfo.getShuffle_state() ? Icon.SHUFFLE_WHITE : Icon.SHUFFLE_WHITE)));
 
     trackName.setText(TrackFormatter.formatTrackTitle(playbackInfo.getItem()));
   }
-
 }

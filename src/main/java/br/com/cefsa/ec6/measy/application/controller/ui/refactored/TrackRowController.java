@@ -5,13 +5,8 @@ import br.com.cefsa.ec6.measy.application.factory.HyperlinkFactory;
 import br.com.cefsa.ec6.measy.infrastructure.util.formatter.MillisTimeFormatter;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import java.util.Collection;
-
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +34,11 @@ public class TrackRowController {
 
   @FXML
   private void initialize() {
-    self.setOnContextMenuRequested(event -> {
-        trackContextMenu.setSelectedTrackUri(trackUri);
-        trackContextMenu.getTrackMenu().show(self, event.getScreenX(), event.getScreenY());
-    });
+    self.setOnContextMenuRequested(
+        event -> {
+          trackContextMenu.setSelectedTrackUri(trackUri);
+          trackContextMenu.getTrackMenu().show(self, event.getScreenX(), event.getScreenY());
+        });
   }
 
   public void setArtists(Collection<ArtistSimplified> artists) {

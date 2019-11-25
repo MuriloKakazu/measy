@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PlaylistRepository implements SpotifyRepository<Playlist> {
 
-  @Autowired TrackRepository trackRepository;
+  @Autowired private TrackRepository trackRepository;
+  @Autowired private UserRepository userRepository;
   @Autowired private SpotifyClient spotifyClient;
 
   @Override
@@ -31,5 +32,9 @@ public class PlaylistRepository implements SpotifyRepository<Playlist> {
 
   public void addTrackToPlaylist(@NotNull String playlistId, @NotNull String trackUri) {
     spotifyClient.addTrackToPlaylist(playlistId, trackUri);
+  }
+
+  public void createPlaylist(@NotNull String playlistName) {
+    spotifyClient.createPlaylist(userRepository.getCurrentUser().getId(), playlistName);
   }
 }

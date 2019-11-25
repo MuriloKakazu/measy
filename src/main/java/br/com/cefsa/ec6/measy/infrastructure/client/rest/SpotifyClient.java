@@ -213,6 +213,13 @@ public class SpotifyClient {
   }
 
   public void addTrackToPlaylist(@NotNull String playlistId, @NotNull String trackUri) {
-    request(spotifyApi.addTracksToPlaylist(playlistId, new JsonArrayBuilder().with(trackUri).build()).build());
+    request(
+        spotifyApi
+            .addTracksToPlaylist(playlistId, new JsonArrayBuilder().with(trackUri).build())
+            .build());
+  }
+
+  public void createPlaylist(@NotNull String userId, @NotNull String playlistName) {
+    request(spotifyApi.createPlaylist(userId, playlistName).build());
   }
 }

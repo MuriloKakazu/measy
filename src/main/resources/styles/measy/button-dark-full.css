@@ -1,3 +1,6 @@
 .button-dark-full {
     -fx-background-color: #414545
 }
+.button-dark-full:hover {
+    -fx-background-color: #5e6363
+}

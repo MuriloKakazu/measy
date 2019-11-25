@@ -4,11 +4,10 @@ import br.com.cefsa.ec6.measy.domain.model.youtube.Video;
 import br.com.cefsa.ec6.measy.infrastructure.client.rest.YoutubeClient;
 import br.com.cefsa.ec6.measy.infrastructure.mapper.YoutubeSearchResultToVideoMapper;
 import com.google.api.services.youtube.model.SearchResult;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import java.util.Collection;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class VideoRepository {
@@ -28,5 +27,4 @@ public class VideoRepository {
   public Video getVideo(String... query) {
     return getVideo(String.join(" ", query));
   }
-
 }

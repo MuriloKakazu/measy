@@ -18,7 +18,9 @@ import org.springframework.stereotype.Repository;
 public class TrackRepository extends CachedRepository<Track> implements SpotifyRepository<Track> {
 
   @Autowired private SpotifyClient spotifyClient;
-  @Value("${spotify.custom.global-charts-playlist-id}") private String globalChartsPlaylistId;
+
+  @Value("${spotify.custom.global-charts-playlist-id}")
+  private String globalChartsPlaylistId;
 
   private Paging<Track> encache(Paging<Track> paging) {
     encache(Arrays.asList(paging.getItems()));

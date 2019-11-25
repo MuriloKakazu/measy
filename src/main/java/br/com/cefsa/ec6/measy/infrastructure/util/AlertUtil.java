@@ -5,7 +5,10 @@ import javafx.scene.control.Alert;
 public class AlertUtil {
 
   public static void showGenericServiceError() {
-    show("Could not comply with request: \nService may be unavailable", "Error", Alert.AlertType.ERROR);
+    show(
+        "Could not comply with request: \nService may be unavailable",
+        "Error",
+        Alert.AlertType.ERROR);
   }
 
   public static void showError(String message) {
@@ -36,5 +39,4 @@ public class AlertUtil {
     alert.setResizable(true);
     alert.showAndWait();
   }
-
 }

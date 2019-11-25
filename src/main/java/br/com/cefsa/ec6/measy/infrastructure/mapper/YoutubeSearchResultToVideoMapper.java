@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class YoutubeSearchResultToVideoMapper {
 
-  @Autowired
-  private YoutubeUrlFormatter youtubeUrlFormatter;
+  @Autowired private YoutubeUrlFormatter youtubeUrlFormatter;
 
   public Video fromSearchResult(SearchResult searchResult) {
     return new Video.Builder()
@@ -19,5 +18,4 @@ public class YoutubeSearchResultToVideoMapper {
         .withUrl(youtubeUrlFormatter.getVideoUrlFromId(searchResult.getId().getVideoId()))
         .build();
   }
-
 }

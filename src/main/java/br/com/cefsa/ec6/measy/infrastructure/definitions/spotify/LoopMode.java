@@ -1,7 +1,5 @@
 package br.com.cefsa.ec6.measy.infrastructure.definitions.spotify;
 
-import org.graalvm.compiler.core.common.cfg.Loop;
-
 import java.util.HashMap;
 import java.util.Map;
 

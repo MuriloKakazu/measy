@@ -2,7 +2,6 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 
 import br.com.cefsa.ec6.measy.application.factory.SidePanelButtonFactory;
 import br.com.cefsa.ec6.measy.domain.repository.spotify.PlaylistRepository;
-import br.com.cefsa.ec6.measy.infrastructure.cache.Cache;
 import br.com.cefsa.ec6.measy.infrastructure.util.CacheHelper;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
@@ -24,6 +23,7 @@ public class SidePanelController {
   @FXML private CollectionController playlistsController;
 
   public void fetchPlaylists() {
+    playlistsController.clear();
     Paging<PlaylistSimplified> userPlaylists = cacheHelper.getUserPlaylists();
 
     for (PlaylistSimplified playlist : userPlaylists.getItems()) {

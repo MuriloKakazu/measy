@@ -13,12 +13,12 @@ public class AuthController {
 
   @Autowired private SpotifyClient spotifyClient;
 
-  @FXML private void onMouseClickedAuth(MouseEvent event) {
+  @FXML
+  private void onMouseClickedAuth(MouseEvent event) {
     try {
       spotifyClient.requestAuthToken();
     } catch (NavigationException e) {
       AlertUtil.showGenericServiceError();
     }
   }
-
 }

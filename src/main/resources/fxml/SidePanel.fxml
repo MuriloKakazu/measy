@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="panel-dark-medium" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.ec6.measy.application.controller.ui.refactored.SidePanelController">
   <children>
-    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <fx:include maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="-1.0" source="MeasyBanner.fxml" VBox.vgrow="NEVER">
           <padding>
@@ -49,6 +49,7 @@
             </VBox>
       </children>
     </VBox>
+      <fx:include source="NewPlaylistButton.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
   </children>
   <stylesheets>
     <URL value="@../styles/measy/panel-dark-medium.css" />

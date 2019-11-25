@@ -1,21 +1,18 @@
 package br.com.cefsa.ec6.measy.application.factory;
 
 import br.com.cefsa.ec6.measy.infrastructure.factory.FXMLLoaderFactory;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-
 @Component
 public class ClientSceneFactory {
 
-  @Autowired
-  private FXMLLoaderFactory fxmlLoaderFactory;
+  @Autowired private FXMLLoaderFactory fxmlLoaderFactory;
 
   public Scene create() {
     try {
@@ -29,5 +26,4 @@ public class ClientSceneFactory {
       throw new RuntimeException(e);
     }
   }
-
 }

@@ -20,7 +20,8 @@ public class UserRepository implements SpotifyRepository<User> {
   }
 
   public User getCurrentUser() {
-    if (cache.contains("current_user")) return ((CacheableValue<User>) cache.get("current_user")).getValue();
+    if (cache.contains("current_user"))
+      return ((CacheableValue<User>) cache.get("current_user")).getValue();
 
     User user = spotifyClient.getUser();
     cache.put("current_user", user);

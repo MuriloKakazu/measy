@@ -15,8 +15,7 @@ import org.springframework.stereotype.Controller;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MultipleArtistsController {
 
-  @Autowired
-  private HyperlinkFactory hyperlinkFactory;
+  @Autowired private HyperlinkFactory hyperlinkFactory;
 
   @FXML private HBox container;
 
@@ -42,5 +41,4 @@ public class MultipleArtistsController {
   public void clear() {
     container.getChildren().clear();
   }
-
 }
