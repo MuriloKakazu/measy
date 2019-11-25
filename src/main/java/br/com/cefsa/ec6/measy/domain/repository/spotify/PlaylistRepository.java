@@ -11,11 +11,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PlaylistRepository implements SpotifyRepository<Playlist> {
 
+  @Autowired private TrackRepository trackRepository;
+  @Autowired private UserRepository userRepository;
   @Autowired private SpotifyClient spotifyClient;
 
   @Override
   public Playlist getById(@NotNull String playlistId) {
-    return spotifyClient.getPlaylist(playlistId);
+    Playlist playlist = spotifyClient.getPlaylist(playlistId);
+    trackRepository.encachePlaylistTracks(playlist.getTracks());
+    return playlist;
   }
 
   public Paging<PlaylistSimplified> search(@NotNull String query) {
@@ -24,5 +28,13 @@ public class PlaylistRepository implements SpotifyRepository<Playlist> {
 
   public Paging<PlaylistSimplified> getCurrentUserPlaylists() {
     return spotifyClient.getUserSavedPlaylists();
+  }
+
+  public void addTrackToPlaylist(@NotNull String playlistId, @NotNull String trackUri) {
+    spotifyClient.addTrackToPlaylist(playlistId, trackUri);
+  }
+
+  public void createPlaylist(@NotNull String playlistName) {
+    spotifyClient.createPlaylist(userRepository.getCurrentUser().getId(), playlistName);
   }
 }

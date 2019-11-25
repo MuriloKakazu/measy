@@ -28,13 +28,13 @@
           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
         </GridPane.margin>
       </fx:include>
-      <Label fx:id="title" contentDisplay="CENTER" maxHeight="-1.0" stylesheets="@../styles/measy/label-hyperlink.css" text="Title" textAlignment="CENTER" textFill="WHITE" textOverrun="ELLIPSIS" underline="false" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label fx:id="title" contentDisplay="CENTER" maxHeight="-1.0" onMouseClicked="#onMouseClickedOnTitle" stylesheets="@../styles/measy/label-hyperlink.css" text="Title" textAlignment="CENTER" textFill="WHITE" textOverrun="ELLIPSIS" underline="false" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
         <GridPane.margin>
           <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" fx:id="x1" />
         </GridPane.margin>
                <font>
                   <Font size="11.0" />
-               </font>
+               </font>c
       </Label>
       </children>
       <columnConstraints>

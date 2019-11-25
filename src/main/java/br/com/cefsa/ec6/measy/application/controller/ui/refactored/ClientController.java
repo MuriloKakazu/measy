@@ -3,6 +3,7 @@ package br.com.cefsa.ec6.measy.application.controller.ui.refactored;
 import br.com.cefsa.ec6.measy.application.factory.AlbumComponentFactory;
 import br.com.cefsa.ec6.measy.application.factory.ArtistComponentFactory;
 import br.com.cefsa.ec6.measy.application.factory.PlaylistComponentFactory;
+import br.com.cefsa.ec6.measy.application.factory.TrackComponentFactory;
 import br.com.cefsa.ec6.measy.infrastructure.util.SpotifyUriHelper;
 import com.wrapper.spotify.model_objects.specification.Album;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Controller;
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class ClientController {
 
+  @Autowired private TrackComponentFactory trackComponentFactory;
   @Autowired private AlbumComponentFactory albumComponentFactory;
   @Autowired private ArtistComponentFactory artistComponentFactory;
   @Autowired private PlaylistComponentFactory playlistComponentFactory;
@@ -30,8 +32,8 @@ public class ClientController {
     scrollableContent.setContent(panel);
   }
 
-  private void setContent(Node node) {
-    setContent((AnchorPane) node);
+  public void setContent(Node node) {
+    scrollableContent.setContent(node);
   }
 
   public void navigateToUri(String uri) {
@@ -44,6 +46,9 @@ public class ClientController {
         break;
       case PLAYLIST:
         setContent(playlistComponentFactory.fromPlaylistId(SpotifyUriHelper.getId(uri)));
+        break;
+      case TRACK:
+        setContent(trackComponentFactory.fromTrackId(SpotifyUriHelper.getId(uri)));
     }
   }
 

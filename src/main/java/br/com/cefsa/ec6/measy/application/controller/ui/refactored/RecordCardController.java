@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javax.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class RecordCardController {
+
+  private String contextUri;
+  @Autowired private ClientController clientController;
 
   @FXML private Label title;
   @FXML private ImageView image;
@@ -26,6 +31,12 @@ public class RecordCardController {
   }
 
   public void setContextUri(@NotNull String contextUri) {
+    this.contextUri = contextUri;
     this.playButtonController.setSpotifyUri(contextUri);
+  }
+
+  @FXML
+  private void onMouseClickedOnTitle(MouseEvent event) {
+    clientController.navigateToUri(contextUri);
   }
 }

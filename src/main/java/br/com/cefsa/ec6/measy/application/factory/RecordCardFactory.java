@@ -21,11 +21,11 @@ public class RecordCardFactory {
 
       final FXMLLoader loader = fxmlLoaderFactory.create("RecordCard");
       Node trackCard = loader.load();
-      RecordCardController trackController = loader.getController();
+      RecordCardController cardController = loader.getController();
 
-      trackController.setContextUri(uri);
-      trackController.setTitle(title);
-      trackController.setImage(imageUrl);
+      cardController.setContextUri(uri);
+      cardController.setTitle(title);
+      cardController.setImage(imageUrl);
 
       return trackCard;
 

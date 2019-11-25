@@ -2,6 +2,7 @@ package br.com.cefsa.ec6.measy.application.controller.rest.handler;
 
 import br.com.cefsa.ec6.measy.application.event.SpotifyAuthEvent;
 import br.com.cefsa.ec6.measy.infrastructure.client.rest.SpotifyClient;
+import br.com.cefsa.ec6.measy.infrastructure.util.AlertUtil;
 import com.google.common.eventbus.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,17 +20,28 @@ public class SpotifyAuthCallbackRestControllerHandler {
     Boolean hasCode = !code.isBlank();
     Boolean hasError = !error.isBlank();
 
-    if (hasCode) {
-      try {
-        spotifyClient.consumeAuthToken(code);
-        eventBus.post(new SpotifyAuthEvent());
-      } catch (Exception e) {
-        return String.format("An unexpected error has occurred: %s", e.getMessage());
-      }
+    if (!hasCode) {
+      String message = "Authentication was not successful!";
+      AlertUtil.showErrorAsync(message);
+      return message;
     }
 
-    return hasError
-        ? String.format("Authentication failed: %s", error)
-        : String.format("Authentication successful!");
+    if (hasError) {
+      String message = String.format("Authentication failed: %s", error);
+      AlertUtil.showErrorAsync(message);
+      return message;
+    }
+
+    try {
+
+      spotifyClient.consumeAuthToken(code);
+      eventBus.post(new SpotifyAuthEvent());
+      return "Authentication successful!";
+
+    } catch (Exception e) {
+      String message = String.format("An unexpected error has occurred: %s", e.getMessage());
+      AlertUtil.showErrorAsync(message);
+      return message;
+    }
   }
 }

@@ -1,3 +1,6 @@
 .button-dark-medium {
     -fx-background-color: #5e6363
 }
+.button-dark-medium:hover {
+    -fx-background-color: #6d7373
+}

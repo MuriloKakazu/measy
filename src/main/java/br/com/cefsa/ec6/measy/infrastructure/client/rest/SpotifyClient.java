@@ -99,6 +99,10 @@ public class SpotifyClient {
     return request(spotifyApi.getPlaylist(playlistId).build());
   }
 
+  public Paging<PlaylistTrack> getPlaylistTracks(@NotNull String playlistId) {
+    return request(spotifyApi.getPlaylistsTracks(playlistId).build());
+  }
+
   public Artist getArtist(@NotNull String artistId) {
     return request(spotifyApi.getArtist(artistId).build());
   }
@@ -206,5 +210,16 @@ public class SpotifyClient {
 
   public CurrentlyPlayingContext getPlaybackInfo() {
     return request(spotifyApi.getInformationAboutUsersCurrentPlayback().build());
+  }
+
+  public void addTrackToPlaylist(@NotNull String playlistId, @NotNull String trackUri) {
+    request(
+        spotifyApi
+            .addTracksToPlaylist(playlistId, new JsonArrayBuilder().with(trackUri).build())
+            .build());
+  }
+
+  public void createPlaylist(@NotNull String userId, @NotNull String playlistName) {
+    request(spotifyApi.createPlaylist(userId, playlistName).build());
   }
 }
