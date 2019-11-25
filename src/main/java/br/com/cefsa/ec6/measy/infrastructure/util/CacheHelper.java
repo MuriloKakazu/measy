@@ -34,7 +34,8 @@ public class CacheHelper {
   }
 
   public Paging<PlaylistSimplified> getUserPlaylists() {
-    return ((CacheableValue<Paging<PlaylistSimplified>>) getCachedValue("user_playlists")).getValue();
+    return ((CacheableValue<Paging<PlaylistSimplified>>) getCachedValue("user_playlists"))
+        .getValue();
   }
 
   public Paging<Track> getUserTopTracks() {
